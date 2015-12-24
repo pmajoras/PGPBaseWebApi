@@ -39,6 +39,16 @@ namespace PGP.Infrastructure.Framework.Enumerators
 
             return enumerator.ToString();
         }
+
+        /// <summary>
+        /// To the int.
+        /// </summary>
+        /// <param name="enumerator">The enumerator.</param>
+        /// <returns></returns>
+        public static int ToInt(this Enum enumerator)
+        {
+            return (int)Convert.ChangeType(enumerator, Enum.GetUnderlyingType(enumerator.GetType()));
+        }
     }
 
 }

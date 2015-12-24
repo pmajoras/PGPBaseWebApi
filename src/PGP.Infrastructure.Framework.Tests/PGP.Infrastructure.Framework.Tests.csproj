@@ -68,6 +68,8 @@
     <Compile Include="Collections\IEnumerableExtensionsTest.cs" />
     <Compile Include="Commons\DomainSpecifications\MustComplyEntity.cs" />
     <Compile Include="Commons\DomainSpecifications\MustComplyWithMetadataSpecificationBaseTest.cs" />
+    <Compile Include="Enumerators\EnumExtensionsTest.cs" />
+    <Compile Include="Enumerators\EnumForTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyHelpers\PropertyHelperTest.cs" />
   </ItemGroup>
