@@ -121,12 +121,14 @@
     <Compile Include="App_Start\ErrorHandlersConfig.cs" />
     <Compile Include="App_Start\FormattersConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="ExceptionHandlers\GlobalExceptionHandler.cs" />
     <Compile Include="ExceptionHandlers\GlobalExceptionLogger.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Messages\ApiMessageCode.cs" />
+    <Compile Include="Models\Accounts\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,9 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Filters\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.Repositories.EF.csproj">

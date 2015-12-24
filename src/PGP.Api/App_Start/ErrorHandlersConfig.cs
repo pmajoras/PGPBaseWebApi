@@ -17,7 +17,7 @@ namespace PGP.Api.App_Start
         public static void SetupExceptionHandlers(HttpConfiguration configuration, IApiMessageHandler messageHandler)
         {
             configuration.Services.Add(typeof(IExceptionLogger), new GlobalExceptionLogger());
-            configuration.Services.Add(typeof(IExceptionHandler), new GlobalExceptionHandler(messageHandler));
+            configuration.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler(null));
         }
     }
 }

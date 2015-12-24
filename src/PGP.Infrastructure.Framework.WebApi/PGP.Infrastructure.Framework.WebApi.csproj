@@ -53,10 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiMessagesHandlers\IApiMessageHandler.cs" />
+    <Compile Include="Controllers\ControllersExtensions.cs" />
     <Compile Include="Formatters\StandardJsonFormatter.cs" />
     <Compile Include="HttpActionResults\ApiResult.cs" />
     <Compile Include="HttpActionResults\ApiResultsHelper.cs" />
-    <Compile Include="Models\IVIewModel.cs" />
+    <Compile Include="Models\IViewModel.cs" />
     <Compile Include="Models\Responses\ApiResponse.cs" />
     <Compile Include="Models\ErrorContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

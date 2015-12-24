@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PGP.Infrastructure.Framework.WebApi.Models
 {
-    public interface IVIewModel
+    public interface IViewModel
     {
     }
 }

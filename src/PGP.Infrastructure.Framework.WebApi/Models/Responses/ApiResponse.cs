@@ -25,7 +25,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// </summary>
         /// <param name="content">The content.</param>
         /// <exception cref="System.ArgumentNullException">content;The content of the response cannot be null.</exception>
-        public ApiResponse(IVIewModel content)
+        public ApiResponse(IViewModel content)
         {
             if (content == null)
             {
@@ -55,7 +55,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// </summary>
         /// <param name="content">The content.</param>
         /// <param name="errors">The errors.</param>
-        public ApiResponse(IVIewModel content, ErrorContent[] errors)
+        public ApiResponse(IViewModel content, ErrorContent[] errors)
             : this(content)
         {
             Errors = errors;
@@ -71,7 +71,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// <value>
         /// The content.
         /// </value>
-        public IVIewModel Content { get; set; }
+        public IViewModel Content { get; set; }
 
         /// <summary>
         /// Gets or sets the errors of the response.
@@ -92,7 +92,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         {
             get
             {
-                return Errors == null && Errors.Length == 0;
+                return Errors == null || Errors.Length == 0;
             }
         }
 
