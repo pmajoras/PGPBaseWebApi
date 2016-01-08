@@ -131,6 +131,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Loggers\NLogger.cs" />
     <Compile Include="Messages\ApiMessageCode.cs" />
     <Compile Include="Models\Accounts\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

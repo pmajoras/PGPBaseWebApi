@@ -55,12 +55,15 @@
   <ItemGroup>
     <Compile Include="ApiLogs\IApiTracer.cs" />
     <Compile Include="ApiMessagesHandlers\IApiMessageHandler.cs" />
-    <Compile Include="Attributes\ApiLogAttribute.cs" />
+    <Compile Include="ActionFilters\ApiLogAttribute.cs" />
     <Compile Include="Controllers\ControllersExtensions.cs" />
     <Compile Include="Controllers\PGPApiController.cs" />
     <Compile Include="ExceptionHandlers\GlobalExceptionHandler.cs" />
     <Compile Include="ExceptionHandlers\GlobalExceptionLogger.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\ServicesContainerExtensions.cs" />
     <Compile Include="Formatters\StandardJsonFormatter.cs" />
+    <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="HttpActionResults\ApiResult.cs" />
     <Compile Include="HttpActionResults\ApiResultsHelper.cs" />
     <Compile Include="Models\IViewModel.cs" />

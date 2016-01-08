@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using PGP.Infrastructure.Framework.WebApi.ActionFilters;
 
 namespace PGP.Api.Controllers
 {
@@ -18,30 +19,31 @@ namespace PGP.Api.Controllers
         }
 
         [HttpGet]
+        [ApiLog()]
         public ApiResult<ApiResponse> GetUsers()
         {
-            return ApiOk(new UserViewModel() { Name = "Teste", Email = "teste2" });
+            return ApiOkResult(new UserViewModel() { Name = "Teste", Email = "teste2" });
         }
 
         [HttpPost]
         public ApiResult<ApiResponse> SaveUser(UserViewModel entity)
         {
 
-            return ApiOk();
+            return ApiOkResult();
         }
 
         [HttpPut]
         public ApiResult<ApiResponse> UpdateUser(UserViewModel entity)
         {
 
-            return ApiOk();
+            return ApiOkResult();
         }
 
         [HttpDelete]
         public ApiResult<ApiResponse> RemoveUser(int id)
         {
 
-            return ApiOk();
+            return ApiOkResult();
         }
     }
 }

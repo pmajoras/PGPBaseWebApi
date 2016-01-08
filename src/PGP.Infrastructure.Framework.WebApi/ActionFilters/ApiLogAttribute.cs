@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PGP.Infrastructure.Framework.WebApi.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.Tracing;
 
-namespace PGP.Infrastructure.Framework.WebApi.Attributes
+namespace PGP.Infrastructure.Framework.WebApi.ActionFilters
 {
     public class ApiLogAttribute : ActionFilterAttribute
     {
@@ -20,7 +21,8 @@ namespace PGP.Infrastructure.Framework.WebApi.Attributes
 
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            var trace = actionContext.RequestContext.Configuration.Services.GetTraceWriter();
+            var trace = actionContext.RequestContext.Configuration.Services.GetApiTraceWriter();
+
             trace.Info(actionContext.Request, 
                 "Controller : " + 
                 actionContext.ControllerContext.ControllerDescriptor.ControllerType.FullName + 

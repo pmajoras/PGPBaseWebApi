@@ -21,7 +21,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Controllers
         /// </summary>
         /// <param name="controller">The controller.</param>
         /// <returns></returns>
-        protected virtual ApiResult<ApiResponse> ApiOk()
+        protected virtual ApiResult<ApiResponse> ApiOkResult()
         {
             return new ApiResult<ApiResponse>(Request, new ApiResponse());
         }
@@ -33,7 +33,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Controllers
         /// <param name="controller">The controller.</param>
         /// <param name="content">The content.</param>
         /// <returns></returns>
-        public virtual ApiResult<ApiResponse> ApiOk<T>(T content) where T : IViewModel
+        public virtual ApiResult<ApiResponse> ApiOkResult<T>(T content) where T : IViewModel
         {
             return new ApiResult<ApiResponse>(Request, new ApiResponse(content));
         }
@@ -45,7 +45,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Controllers
         /// <param name="controller">The controller.</param>
         /// <param name="content">The content.</param>
         /// <returns></returns>
-        public virtual ApiResult<ApiResponse> ApiBadRequest<T>(ErrorContent error) where T : IViewModel
+        public virtual ApiResult<ApiResponse> ApiBadRequestResult<T>(ErrorContent error) where T : IViewModel
         {
             return new ApiResult<ApiResponse>(Request, new ApiResponse(error), null, HttpStatusCode.BadRequest);
         }
