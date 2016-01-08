@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace PGP.Api.Controllers
 {
-    public class AccountsController : ApiController
+    public class AccountsController : PGPApiController
     {
         public AccountsController()
         {
@@ -20,28 +20,28 @@ namespace PGP.Api.Controllers
         [HttpGet]
         public ApiResult<ApiResponse> GetUsers()
         {
-            return this.ApiOk(new UserViewModel() { Name = "Teste", Email = "teste2" });
+            return ApiOk(new UserViewModel() { Name = "Teste", Email = "teste2" });
         }
 
         [HttpPost]
         public ApiResult<ApiResponse> SaveUser(UserViewModel entity)
         {
 
-            return this.ApiOk();
+            return ApiOk();
         }
 
         [HttpPut]
         public ApiResult<ApiResponse> UpdateUser(UserViewModel entity)
         {
 
-            return this.ApiOk();
+            return ApiOk();
         }
 
         [HttpDelete]
         public ApiResult<ApiResponse> RemoveUser(int id)
         {
 
-            return this.ApiOk();
+            return ApiOk();
         }
     }
 }

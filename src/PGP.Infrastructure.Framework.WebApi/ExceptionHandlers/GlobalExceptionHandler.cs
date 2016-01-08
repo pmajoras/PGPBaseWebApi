@@ -1,12 +1,10 @@
-﻿using PGP.Api.Messages;
-using PGP.Infrastructure.Framework.Enumerators;
-using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
+﻿using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
 using System.Net;
 using System.Web;
 using System.Web.Http.ExceptionHandling;
 
-namespace PGP.Api.ExceptionHandlers
+namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
 {
     /// <summary>
     /// The Class responsable for the global exception handler of the API.
@@ -38,8 +36,8 @@ namespace PGP.Api.ExceptionHandlers
 
             context.Result = ApiResultsHelper.CreateApiResultFromException(context.Request,
                   httpException,
-                  ApiMessageCode.Error.ToInt(),
-                  m_apiMessageHandler.GetMessageFromEnum(ApiMessageCode.Error),
+                  m_apiMessageHandler.GetGenericErrorCode(),
+                  m_apiMessageHandler.GetMessageFromCode(m_apiMessageHandler.GetGenericErrorCode()),
                   httpStatusCode);
         }
     }

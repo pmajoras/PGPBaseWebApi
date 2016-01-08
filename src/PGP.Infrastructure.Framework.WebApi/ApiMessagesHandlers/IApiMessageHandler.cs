@@ -32,5 +32,11 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers
         /// <param name="enumCode">The enum code.</param>
         /// <returns></returns>
         ErrorContent GetErrorFromEnum(Enum enumCode);
+
+        /// <summary>
+        /// Gets the generic error code.
+        /// </summary>
+        /// <returns></returns>
+        int GetGenericErrorCode();
     }
 }

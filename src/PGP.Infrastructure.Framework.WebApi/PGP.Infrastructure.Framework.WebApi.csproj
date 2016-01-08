@@ -40,6 +40,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
@@ -52,8 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiLogs\IApiTracer.cs" />
     <Compile Include="ApiMessagesHandlers\IApiMessageHandler.cs" />
+    <Compile Include="Attributes\ApiLogAttribute.cs" />
     <Compile Include="Controllers\ControllersExtensions.cs" />
+    <Compile Include="Controllers\PGPApiController.cs" />
+    <Compile Include="ExceptionHandlers\GlobalExceptionHandler.cs" />
+    <Compile Include="ExceptionHandlers\GlobalExceptionLogger.cs" />
     <Compile Include="Formatters\StandardJsonFormatter.cs" />
     <Compile Include="HttpActionResults\ApiResult.cs" />
     <Compile Include="HttpActionResults\ApiResultsHelper.cs" />
