@@ -19,7 +19,7 @@ namespace PGP.Api.Controllers
         }
 
         [HttpGet]
-        [ApiLog()]
+        [ApiLog]
         public ApiResult<ApiResponse> GetUsers()
         {
             return ApiOkResult(new UserViewModel() { Name = "Teste", Email = "teste2" });

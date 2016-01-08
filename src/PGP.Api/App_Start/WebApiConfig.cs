@@ -15,6 +15,7 @@ namespace PGP.Api
         public static void Register(HttpConfiguration config)
         {
             config.Services.Replace(typeof(ITraceWriter), new NLogger());
+
             // Web API configuration and services
             ErrorHandlersConfig.SetupExceptionHandlers(config, null, config.Services.GetApiTraceWriter());
             FormattersConfig.SetupApiFormatters(config);

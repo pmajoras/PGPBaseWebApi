@@ -60,10 +60,11 @@ namespace PGP.Api.Loggers
             {
                 if (traceAction != null && traceAction.Target != null)
                 {
-                    category = category + Environment.NewLine + "Action Parameters : "; //+ traceAction.Target.ToJSON();
+                    category = category + Environment.NewLine + "Action Parameters : " + traceAction.Target.ToJSON();
                 }
 
                 var record = new TraceRecord(request, category, level);
+
                 if (traceAction != null) traceAction(record);
                 Log(record);
             }
@@ -111,7 +112,40 @@ namespace PGP.Api.Loggers
                 message.Append(" ").Append(record.Operator).Append(" ").Append(record.Operation);
 
 
-            m_logger[record.Level](Convert.ToString(message) + Environment.NewLine);
+            s_classLogger.Log(GetLogLevel(record.Level), Convert.ToString(message) + Environment.NewLine);
+        }
+
+        /// <summary>
+        /// Gets the log level.
+        /// </summary>
+        /// <param name="level">The level.</param>
+        /// <returns></returns>
+        private LogLevel GetLogLevel(TraceLevel level)
+        {
+            LogLevel returnLogLevel = null;
+            switch (level)
+            {
+                case TraceLevel.Debug:
+                    returnLogLevel = LogLevel.Debug;
+                    break;
+                case TraceLevel.Info:
+                    returnLogLevel = LogLevel.Info;
+                    break;
+                case TraceLevel.Warn:
+                    returnLogLevel = LogLevel.Warn;
+                    break;
+                case TraceLevel.Error:
+                    returnLogLevel = LogLevel.Error;
+                    break;
+                case TraceLevel.Fatal:
+                    returnLogLevel = LogLevel.Fatal;
+                    break;
+                case TraceLevel.Off:
+                    returnLogLevel = LogLevel.Off;
+                    break;
+            }
+
+            return returnLogLevel;
         }
 
         #endregion

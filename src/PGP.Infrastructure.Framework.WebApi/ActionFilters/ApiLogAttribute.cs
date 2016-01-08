@@ -23,8 +23,8 @@ namespace PGP.Infrastructure.Framework.WebApi.ActionFilters
         {
             var trace = actionContext.RequestContext.Configuration.Services.GetApiTraceWriter();
 
-            trace.Info(actionContext.Request, 
-                "Controller : " + 
+            trace.Warn(actionContext.Request, 
+                "Controller: " + 
                 actionContext.ControllerContext.ControllerDescriptor.ControllerType.FullName + 
                 Environment.NewLine + 
                 "Action : " + 
