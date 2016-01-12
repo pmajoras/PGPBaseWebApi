@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using PGP.Infrastructure.Framework.WebApi.ActionFilters;
+using PGP.Api.ApiMessageHandlers;
+using PGP.Infrastructure.Framework.WebApi.Models;
 
 namespace PGP.Api.Controllers
 {

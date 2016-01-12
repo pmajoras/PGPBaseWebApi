@@ -1,4 +1,5 @@
-﻿using PGP.Api.App_Start;
+﻿using PGP.Api.ApiMessageHandlers;
+using PGP.Api.App_Start;
 using PGP.Api.Loggers;
 using PGP.Infrastructure.Framework.WebApi.Extensions;
 using PGP.Infrastructure.Framework.WebApi.Formatters;
@@ -17,7 +18,7 @@ namespace PGP.Api
             config.Services.Replace(typeof(ITraceWriter), new NLogger());
 
             // Web API configuration and services
-            ErrorHandlersConfig.SetupExceptionHandlers(config, null, config.Services.GetApiTraceWriter());
+            ErrorHandlersConfig.SetupExceptionHandlers(config, new MessageHandler(), config.Services.GetApiTraceWriter());
             FormattersConfig.SetupApiFormatters(config);
 
             // Web API routes

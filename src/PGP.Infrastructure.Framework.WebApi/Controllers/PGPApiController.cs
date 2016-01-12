@@ -41,11 +41,10 @@ namespace PGP.Infrastructure.Framework.WebApi.Controllers
         /// <summary>
         /// APIs the response.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="controller">The controller.</param>
         /// <param name="content">The content.</param>
         /// <returns></returns>
-        public virtual ApiResult<ApiResponse> ApiBadRequestResult<T>(ErrorContent error) where T : IViewModel
+        public virtual ApiResult<ApiResponse> ApiBadRequestResult(ErrorContent error)
         {
             return new ApiResult<ApiResponse>(Request, new ApiResponse(error), null, HttpStatusCode.BadRequest);
         }

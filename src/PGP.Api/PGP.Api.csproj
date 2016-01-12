@@ -124,6 +124,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiMessageHandlers\MessageHandler.cs" />
     <Compile Include="App_Start\ErrorHandlersConfig.cs" />
     <Compile Include="App_Start\FormattersConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -139,6 +140,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="NLog.config" />
+    <Content Include="Messages\ApiMessages.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

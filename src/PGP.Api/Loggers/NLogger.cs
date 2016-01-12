@@ -13,7 +13,6 @@ namespace PGP.Api.Loggers
 {
     public sealed class NLogger : IApiTracer
     {
-
         #region Private member variables.
 
         /// <summary>
