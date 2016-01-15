@@ -1,16 +1,13 @@
 ﻿using PGP.Infrastructure.Framework.Specifications.Results;
-using System;
 
 namespace PGP.Infrastructure.Framework.Specifications
 {
-
     /// <summary>
     /// The class that represents a Domain Specification of an entity
     /// </summary>
     /// <typeparam name="TTarget">The type of the target.</typeparam>
     public abstract class DomainSpecification<TTarget> : IDomainSpecification<TTarget>
     {
-
         #region Constructors
 
         public DomainSpecification()
@@ -18,7 +15,7 @@ namespace PGP.Infrastructure.Framework.Specifications
             SpecificationResult = new DomainSpecificationResult();
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Interface Methods And Properties
 
@@ -51,6 +48,6 @@ namespace PGP.Infrastructure.Framework.Specifications
             return !SpecificationResult.HasError;
         }
 
-        #endregion
+        #endregion Interface Methods And Properties
     }
 }

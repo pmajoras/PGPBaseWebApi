@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PGP.Infrastructure.Framework.Globalization
 {
@@ -13,10 +11,13 @@ namespace PGP.Infrastructure.Framework.Globalization
     public static class CultureInfoHelper
     {
         #region Fields
+
         private static Dictionary<string, CultureInfo> s_cultureInfoCache = new Dictionary<string, CultureInfo>();
-        #endregion
+
+        #endregion Fields
 
         #region Methods
+
         /// <summary>
         /// Get the currency info througt the symbol of a cash.
         /// </summary>
@@ -39,6 +40,6 @@ namespace PGP.Infrastructure.Framework.Globalization
             }
         }
 
-        #endregion
+        #endregion Methods
     }
 }

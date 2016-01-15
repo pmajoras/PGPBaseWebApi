@@ -1,6 +1,6 @@
-﻿using HelperSharp;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using HelperSharp;
 
 namespace PGP.Infrastructure.Framework.PropertyHelpers
 {
@@ -9,7 +9,6 @@ namespace PGP.Infrastructure.Framework.PropertyHelpers
     /// </summary>
     public static class PropertyHelper
     {
-
         /// <summary>
         /// Gets the name of the property.
         /// </summary>

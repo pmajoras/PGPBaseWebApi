@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PGP.Infrastructure.Framework.Repositories
 {
@@ -23,7 +19,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         protected IDomainContext m_domainContext;
 
-        #endregion
+        #endregion Protected Properties
 
         #region Constructors
 
@@ -36,7 +32,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             m_domainContext = domainContext;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Inteface Methods
 
@@ -65,7 +61,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             m_domainContext.ClearContext();
         }
 
-        #endregion
+        #endregion Inteface Methods
 
         #region Dispose
 
@@ -96,6 +92,6 @@ namespace PGP.Infrastructure.Framework.Repositories
             GC.SuppressFinalize(this);
         }
 
-        #endregion
+        #endregion Dispose
     }
 }

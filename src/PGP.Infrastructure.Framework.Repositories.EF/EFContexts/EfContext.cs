@@ -1,15 +1,13 @@
-﻿using HelperSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HelperSharp;
 
 namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public abstract class EfContext : DbContext, IDomainContext
     {
@@ -20,13 +18,13 @@ namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
         /// </summary>
         private DbContextTransaction m_currentTransaction = null;
 
-        #endregion
+        #endregion Private Properties
 
         #region Protected Properties
 
         protected Dictionary<Type, IRepository<IEntity>> m_registeredRepositories = new Dictionary<Type, IRepository<IEntity>>();
 
-        #endregion
+        #endregion Protected Properties
 
         #region Constructors
 
@@ -37,7 +35,7 @@ namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
         {
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Interface Methods
 
@@ -186,12 +184,15 @@ namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
                         case EntityState.Added:
                             repository.BeforePersistNewItem(entry.Entity as IEntity);
                             break;
+
                         case EntityState.Deleted:
                             repository.BeforeDeleteItem(entry.Entity as IEntity);
                             break;
+
                         case EntityState.Modified:
                             repository.BeforePersistUpdatedItem(entry.Entity as IEntity);
                             break;
+
                         default:
                             break;
                     }
@@ -232,7 +233,7 @@ namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
             m_registeredRepositories.Clear();
         }
 
-        #endregion
+        #endregion Interface Methods
 
         #region Dispose
 
@@ -251,7 +252,7 @@ namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
             base.Dispose(disposing);
         }
 
-        #endregion
+        #endregion Dispose
 
         #region Private Helpers
 
@@ -278,6 +279,6 @@ namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
             }
         }
 
-        #endregion
+        #endregion Private Helpers
     }
 }

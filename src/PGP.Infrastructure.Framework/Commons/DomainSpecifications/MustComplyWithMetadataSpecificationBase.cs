@@ -1,17 +1,13 @@
-﻿using HelperSharp;
-using KissSpecifications;
-using PGP.Infrastructure.Framework.Specifications;
-using PGP.Infrastructure.Framework.Specifications.Errors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HelperSharp;
+using PGP.Infrastructure.Framework.Specifications;
+using PGP.Infrastructure.Framework.Specifications.Errors;
 
 namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
 {
-
     /// <summary>
     /// Must comply with metadata specification.
     /// </summary>
@@ -21,7 +17,7 @@ namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
 
         protected Dictionary<Type, DomainSpecificationError> m_errorReasons = new Dictionary<Type, DomainSpecificationError>();
 
-        #endregion
+        #endregion NotSatisfiedReasons
 
         #region Constructors
 
@@ -55,7 +51,7 @@ namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
             }
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Interface Methods
 
@@ -85,11 +81,10 @@ namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
                 }
             }
 
-
             return base.IsSatisfiedBy(target);
         }
 
-        #endregion
+        #endregion Interface Methods
 
         #region Protected Methods
 
@@ -115,6 +110,6 @@ namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
             return returnError;
         }
 
-        #endregion
+        #endregion Protected Methods
     }
 }

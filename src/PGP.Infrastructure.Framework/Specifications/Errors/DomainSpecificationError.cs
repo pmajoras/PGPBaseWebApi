@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PGP.Infrastructure.Framework.Specifications.Errors
+﻿namespace PGP.Infrastructure.Framework.Specifications.Errors
 {
     /// <summary>
     /// A class that represents a Domain Specification Error
@@ -26,7 +20,7 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
             FieldName = fieldName;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Public Properties
 
@@ -54,6 +48,6 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
         /// </value>
         public string FieldName { get; protected set; }
 
-        #endregion
+        #endregion Public Properties
     }
 }

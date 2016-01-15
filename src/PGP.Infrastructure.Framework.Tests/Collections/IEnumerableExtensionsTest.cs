@@ -1,10 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using PGP.Infrastructure.Framework.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PGP.Infrastructure.Framework.Collections;
 
 namespace PGP.Infrastructure.Framework.Tests.Collections
 {
@@ -21,8 +19,7 @@ namespace PGP.Infrastructure.Framework.Tests.Collections
         {
         }
 
-        #endregion
-
+        #endregion Initialize
 
         #region Tests Methods
 
@@ -89,6 +86,6 @@ namespace PGP.Infrastructure.Framework.Tests.Collections
             Assert.Fail();
         }
 
-        #endregion
+        #endregion Tests Methods
     }
 }

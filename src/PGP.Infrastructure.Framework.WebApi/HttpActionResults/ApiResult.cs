@@ -35,7 +35,7 @@ namespace PGP.Infrastructure.Framework.WebApi.HttpActionResults
         /// </summary>
         protected HttpStatusCode m_defaultStatusCode;
 
-        #endregion
+        #endregion Protected Properties
 
         #region Constructors
 
@@ -71,7 +71,7 @@ namespace PGP.Infrastructure.Framework.WebApi.HttpActionResults
             m_formatter = formatter ?? new StandardJsonFormatter();
         }
 
-        #endregion
+        #endregion Constructors
 
         /// <summary>
         /// Executes the asynchronous.
@@ -85,4 +85,3 @@ namespace PGP.Infrastructure.Framework.WebApi.HttpActionResults
         }
     }
 }
-

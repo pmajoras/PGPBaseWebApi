@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PGP.Infrastructure.Framework.Commons.DomainSpecifications;
-using System.Linq;
-using System.Collections.Generic;
 using PGP.Infrastructure.Framework.Specifications.Errors;
-using System.ComponentModel.DataAnnotations;
 
 namespace PGP.Infrastructure.Framework.Tests.Commons.DomainSpecifications
 {
@@ -22,10 +22,9 @@ namespace PGP.Infrastructure.Framework.Tests.Commons.DomainSpecifications
         [TestInitialize]
         public void InitializeTests()
         {
-
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Tests Constructors
 
@@ -88,6 +87,6 @@ namespace PGP.Infrastructure.Framework.Tests.Commons.DomainSpecifications
             Assert.IsTrue(specification.SpecificationResult.GetErrors().Any(x => x.NotSatisfiedReason == customMessage));
         }
 
-        #endregion
+        #endregion Tests Constructors
     }
 }

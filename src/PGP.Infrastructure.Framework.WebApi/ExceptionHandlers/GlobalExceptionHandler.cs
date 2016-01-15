@@ -1,8 +1,8 @@
-﻿using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
-using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
-using System.Net;
+﻿using System.Net;
 using System.Web;
 using System.Web.Http.ExceptionHandling;
+using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
+using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
 
 namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
 {

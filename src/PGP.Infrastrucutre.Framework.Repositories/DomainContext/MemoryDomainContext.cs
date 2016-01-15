@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HelperSharp;
 
 namespace PGP.Infrastructure.Framework.Repositories
@@ -59,7 +57,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         private bool m_disposed = false;
 
-        #endregion
+        #endregion Private Properties
 
         #region Constructors
 
@@ -68,10 +66,9 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         public MemoryDomainContext()
         {
-
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Interface Methods
 
@@ -340,7 +337,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             }
         }
 
-        #endregion
+        #endregion Interface Methods
 
         #region Public Properties
 
@@ -352,7 +349,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </value>
         public bool HasPendingTransaction { get { return m_currentTransaction != null; } }
 
-        #endregion
+        #endregion Public Properties
 
         #region Dispose
 
@@ -384,7 +381,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             GC.SuppressFinalize(this);
         }
 
-        #endregion
+        #endregion Dispose
 
         #region Helpers
 
@@ -480,6 +477,6 @@ namespace PGP.Infrastructure.Framework.Repositories
             return dictionary.ContainsKey(listType);
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

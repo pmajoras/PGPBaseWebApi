@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using HelperSharp;
 
 namespace PGP.Infrastructure.Framework.Repositories
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
     public abstract class PGPRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
@@ -21,7 +19,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         private IDomainContext m_domainContext;
 
-        #endregion
+        #endregion Private Properties
 
         #region Constructors
 
@@ -36,7 +34,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             m_domainContext.RegisterRepository(this);
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Interface Methods
 
@@ -171,6 +169,6 @@ namespace PGP.Infrastructure.Framework.Repositories
             m_domainContext = context;
         }
 
-        #endregion
+        #endregion Interface Methods
     }
 }

@@ -1,23 +1,24 @@
-﻿using KissSpecifications;
-using KissSpecifications.Globalization;
+﻿using System.Linq;
+using KissSpecifications;
 using PGP.Infrastructure.Framework.Specifications.Errors;
-using System.Linq;
 
 namespace PGP.Infrastructure.Framework.Specifications
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class SpecService
     {
-        #region Constructors     
+        #region Constructors
+
         /// <summary>
         /// Initializes the <see cref="SpecService"/> class.
         /// </summary>
         static SpecService()
         {
         }
-        #endregion
+
+        #endregion Constructors
 
         /// <summary>
         /// Asserts the specified target.

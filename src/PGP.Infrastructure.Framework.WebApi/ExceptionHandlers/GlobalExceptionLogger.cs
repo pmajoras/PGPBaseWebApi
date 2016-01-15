@@ -1,16 +1,12 @@
-﻿using PGP.Infrastructure.Framework.WebApi.ApiLogs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Tracing;
+using PGP.Infrastructure.Framework.WebApi.ApiLogs;
 
 namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class GlobalExceptionLogger : ExceptionLogger
     {

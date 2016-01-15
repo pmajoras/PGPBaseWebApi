@@ -1,10 +1,6 @@
-﻿using HelperSharp;
-using KissSpecifications;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KissSpecifications;
 
 namespace PGP.Infrastructure.Framework.Specifications.Errors
 {
@@ -44,7 +40,7 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
             }
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Public Properties
 
@@ -56,6 +52,6 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
         /// </value>
         public DomainSpecificationError[] Errors { get; protected set; }
 
-        #endregion
+        #endregion Public Properties
     }
 }

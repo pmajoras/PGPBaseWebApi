@@ -12,8 +12,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Formatters
     /// </summary>
     public class StandardJsonFormatter : JsonMediaTypeFormatter
     {
-
-        #region Constructors  
+        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StandardJsonFormatter"/> class.
@@ -31,7 +30,8 @@ namespace PGP.Infrastructure.Framework.WebApi.Formatters
             SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
             SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Methods
 
@@ -46,6 +46,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Formatters
             base.SetDefaultContentHeaders(type, headers, mediaType);
             headers.ContentType = new MediaTypeHeaderValue("application/json");
         }
-        #endregion
+
+        #endregion Methods
     }
 }

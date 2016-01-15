@@ -1,10 +1,10 @@
-﻿using PGP.Infrastructure.Framework.WebApi.Formatters;
-using System.Web.Http;
+﻿using System.Web.Http;
+using PGP.Infrastructure.Framework.WebApi.Formatters;
 
 namespace PGP.Api.App_Start
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class FormattersConfig
     {

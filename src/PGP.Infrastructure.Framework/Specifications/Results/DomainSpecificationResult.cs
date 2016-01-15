@@ -1,10 +1,7 @@
-﻿using HelperSharp;
-using PGP.Infrastructure.Framework.Specifications.Errors;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HelperSharp;
+using PGP.Infrastructure.Framework.Specifications.Errors;
 
 namespace PGP.Infrastructure.Framework.Specifications.Results
 {
@@ -20,7 +17,7 @@ namespace PGP.Infrastructure.Framework.Specifications.Results
         /// </summary>
         private IList<DomainSpecificationError> m_errors;
 
-        #endregion
+        #endregion Private properties
 
         #region Constructors
 
@@ -32,7 +29,7 @@ namespace PGP.Infrastructure.Framework.Specifications.Results
             m_errors = new List<DomainSpecificationError>();
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Public Properties
 
@@ -50,7 +47,7 @@ namespace PGP.Infrastructure.Framework.Specifications.Results
             }
         }
 
-        #endregion
+        #endregion Public Properties
 
         #region Public Methods
 
@@ -74,7 +71,6 @@ namespace PGP.Infrastructure.Framework.Specifications.Results
             AddError(new DomainSpecificationError(errorCode, notSatisfiedReason, fieldName));
         }
 
-
         /// <summary>
         /// Adds an error to the specification result.
         /// </summary>
@@ -89,6 +85,6 @@ namespace PGP.Infrastructure.Framework.Specifications.Results
             }
         }
 
-        #endregion
+        #endregion Public Methods
     }
 }

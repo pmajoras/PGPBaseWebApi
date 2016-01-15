@@ -1,5 +1,5 @@
-﻿using PGP.Infrastructure.Framework.WebApi.Models;
-using System;
+﻿using System;
+using PGP.Infrastructure.Framework.WebApi.Models;
 
 namespace PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers
 {

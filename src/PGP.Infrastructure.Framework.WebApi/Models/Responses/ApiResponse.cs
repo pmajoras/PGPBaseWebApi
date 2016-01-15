@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
 {
@@ -9,7 +8,6 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
     /// </summary>
     public class ApiResponse
     {
-
         #region Constructors
 
         /// <summary>
@@ -17,7 +15,6 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// </summary>
         public ApiResponse()
         {
-
         }
 
         /// <summary>
@@ -61,7 +58,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
             Errors = errors;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Public Properties
 
@@ -81,7 +78,6 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// </value>
         public ErrorContent[] Errors { get; set; }
 
-
         /// <summary>
         /// Gets a value indicating whether this <see cref="ApiResponse"/> is success.
         /// </summary>
@@ -96,6 +92,6 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
             }
         }
 
-        #endregion
+        #endregion Public Properties
     }
 }

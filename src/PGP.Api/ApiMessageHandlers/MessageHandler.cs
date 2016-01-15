@@ -1,18 +1,16 @@
-﻿using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using PGP.Infrastructure.Framework.WebApi.Models;
-using Newtonsoft.Json;
 using System.Configuration;
 using System.IO;
+using Newtonsoft.Json;
+using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
 using PGP.Infrastructure.Framework.WebApi.Helpers;
+using PGP.Infrastructure.Framework.WebApi.Models;
 
 namespace PGP.Api.ApiMessageHandlers
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class MessageHandler : IApiMessageHandler
     {
@@ -25,7 +23,7 @@ namespace PGP.Api.ApiMessageHandlers
 
         private Dictionary<int, string> m_errorList = new Dictionary<int, string>();
 
-        #endregion
+        #endregion Private Properties
 
         #region Constructors
 
@@ -37,7 +35,7 @@ namespace PGP.Api.ApiMessageHandlers
             LoadMessages();
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Interface Methods
 
@@ -101,7 +99,7 @@ namespace PGP.Api.ApiMessageHandlers
             throw new NotImplementedException();
         }
 
-        #endregion
+        #endregion Interface Methods
 
         #region Private Methods
 
@@ -130,6 +128,6 @@ namespace PGP.Api.ApiMessageHandlers
             }
         }
 
-        #endregion
+        #endregion Private Methods
     }
 }

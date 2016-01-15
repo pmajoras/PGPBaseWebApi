@@ -1,12 +1,11 @@
-﻿using PGP.Infrastructure.Framework.WebApi.ApiLogs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http.Tracing;
 using NLog;
-using System.Text;
+using PGP.Infrastructure.Framework.WebApi.ApiLogs;
 using PGP.Infrastructure.Framework.WebApi.Extensions;
 
 namespace PGP.Api.Loggers
@@ -30,7 +29,7 @@ namespace PGP.Api.Loggers
                 { TraceLevel.Warn, s_classLogger.Warn } }
             );
 
-        #endregion
+        #endregion Private member variables.
 
         #region Private properties.
 
@@ -42,7 +41,7 @@ namespace PGP.Api.Loggers
             get { return s_loggingMap.Value; }
         }
 
-        #endregion
+        #endregion Private properties.
 
         #region Public member methods.
 
@@ -68,7 +67,8 @@ namespace PGP.Api.Loggers
                 Log(record);
             }
         }
-        #endregion
+
+        #endregion Public member methods.
 
         #region Private member methods.
 
@@ -110,7 +110,6 @@ namespace PGP.Api.Loggers
             if (!string.IsNullOrWhiteSpace(record.Operator))
                 message.Append(" ").Append(record.Operator).Append(" ").Append(record.Operation);
 
-
             s_classLogger.Log(GetLogLevel(record.Level), Convert.ToString(message) + Environment.NewLine);
         }
 
@@ -127,18 +126,23 @@ namespace PGP.Api.Loggers
                 case TraceLevel.Debug:
                     returnLogLevel = LogLevel.Debug;
                     break;
+
                 case TraceLevel.Info:
                     returnLogLevel = LogLevel.Info;
                     break;
+
                 case TraceLevel.Warn:
                     returnLogLevel = LogLevel.Warn;
                     break;
+
                 case TraceLevel.Error:
                     returnLogLevel = LogLevel.Error;
                     break;
+
                 case TraceLevel.Fatal:
                     returnLogLevel = LogLevel.Fatal;
                     break;
+
                 case TraceLevel.Off:
                     returnLogLevel = LogLevel.Off;
                     break;
@@ -147,6 +151,6 @@ namespace PGP.Api.Loggers
             return returnLogLevel;
         }
 
-        #endregion
+        #endregion Private member methods.
     }
 }

@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PGP.Infrastructure.Framework.Enumerators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PGP.Infrastructure.Framework.Tests.Enumerators
 {
@@ -16,10 +11,9 @@ namespace PGP.Infrastructure.Framework.Tests.Enumerators
         [TestInitialize]
         public void Initialize()
         {
-
         }
 
-        #endregion
+        #endregion Initialize
 
         #region Test Methods
 
@@ -50,6 +44,6 @@ namespace PGP.Infrastructure.Framework.Tests.Enumerators
             Assert.AreEqual(3, EnumForTest.TestNoValue3.ToInt());
         }
 
-        #endregion
+        #endregion Test Methods
     }
 }

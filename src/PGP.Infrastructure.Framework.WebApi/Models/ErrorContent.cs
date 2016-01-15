@@ -1,12 +1,10 @@
-﻿
-namespace PGP.Infrastructure.Framework.WebApi.Models
+﻿namespace PGP.Infrastructure.Framework.WebApi.Models
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ErrorContent
     {
-
         #region Constructors
 
         /// <summary>
@@ -14,7 +12,6 @@ namespace PGP.Infrastructure.Framework.WebApi.Models
         /// </summary>
         public ErrorContent()
         {
-
         }
 
         /// <summary>
@@ -49,7 +46,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models
             FieldName = fieldName;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Public Properties
 
@@ -77,6 +74,6 @@ namespace PGP.Infrastructure.Framework.WebApi.Models
         /// </value>
         public string FieldName { get; set; }
 
-        #endregion
+        #endregion Public Properties
     }
 }

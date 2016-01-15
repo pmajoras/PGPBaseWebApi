@@ -1,10 +1,8 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PGP.Infrastructure.Framework.Repositories;
-using Moq;
-using System.Linq.Expressions;
-using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using PGP.Infrastructure.Framework.Repositories;
 
 namespace PGP.Infrastructure.Framework.Tests.DomainContext
 {
@@ -16,9 +14,9 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
     {
         #region Private properties
 
-        MemoryDomainContext m_target;
+        private MemoryDomainContext m_target;
 
-        #endregion
+        #endregion Private properties
 
         #region Initialization
 
@@ -31,7 +29,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             m_target = new MemoryDomainContext();
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Tests
 
@@ -58,7 +56,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.Fail();
         }
 
-        #endregion
+        #endregion RegisterRepository
 
         #region RegisterNew
 
@@ -82,7 +80,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.Fail();
         }
 
-        #endregion
+        #endregion RegisterNew
 
         #region Attach
 
@@ -106,7 +104,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.Fail();
         }
 
-        #endregion
+        #endregion Attach
 
         #region RegisterDeleted
 
@@ -132,7 +130,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.Fail();
         }
 
-        #endregion
+        #endregion RegisterDeleted
 
         #region RegisterChanged
 
@@ -159,7 +157,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.Fail();
         }
 
-        #endregion
+        #endregion RegisterChanged
 
         #region CreateQuery
 
@@ -174,7 +172,6 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             var entityToAdd = new PGPEntity();
             m_target.RegisterNew(entityToAdd);
             m_target.SaveContextChanges();
-
 
             var finalList = m_target.CreateQuery<PGPEntity>().ToList();
 
@@ -194,14 +191,13 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             m_target.RegisterNew(entityToAdd);
             m_target.SaveContextChanges();
 
-
             var finalList = m_target.CreateQuery<PGPEntity>()
                 .Where(x => x.Id == -1).ToList();
 
             Assert.AreEqual(initialList.Count, finalList.Count);
         }
 
-        #endregion
+        #endregion CreateQuery
 
         #region GetById
 
@@ -216,7 +212,6 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             var entityToAdd = new PGPEntity();
             m_target.RegisterNew(entityToAdd);
             m_target.SaveContextChanges();
-
 
             var entityFoundById = m_target.GetById<PGPEntity>(entityToAdd.Id);
 
@@ -236,13 +231,12 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             m_target.RegisterNew(entityToAdd);
             m_target.SaveContextChanges();
 
-
             var entityFoundById = m_target.GetById<PGPEntity>(-1);
 
             Assert.IsNull(entityFoundById);
         }
 
-        #endregion
+        #endregion GetById
 
         #region BeginTransaction
 
@@ -267,7 +261,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.IsTrue(m_target.HasPendingTransaction);
         }
 
-        #endregion
+        #endregion BeginTransaction
 
         #region CommitTransaction
 
@@ -301,7 +295,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.Fail();
         }
 
-        #endregion
+        #endregion CommitTransaction
 
         #region RoolbackTransaction
 
@@ -335,8 +329,8 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
             Assert.Fail();
         }
 
-        #endregion
+        #endregion RoolbackTransaction
 
-        #endregion
+        #endregion Tests
     }
 }

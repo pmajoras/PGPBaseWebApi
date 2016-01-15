@@ -1,14 +1,11 @@
-﻿using HelperSharp;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using HelperSharp;
 using KissSpecifications;
 using KissSpecifications.Commons;
 using PGP.Infrastructure.Framework.Commons.DomainSpecifications;
 using PGP.Infrastructure.Framework.Specifications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PGP.Infrastructure.Framework.Repositories
 {
@@ -30,7 +27,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         protected IRepository<TEntity> m_repository;
 
-        #endregion
+        #endregion Protected Properties
 
         #region Constructors
 
@@ -48,7 +45,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             m_repository = repository;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Interface Methods
 
@@ -162,7 +159,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             m_repository.Delete(entity);
         }
 
-        #endregion
+        #endregion Interface Methods
 
         #region Specifications Protected Methods
 
@@ -192,7 +189,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             };
         }
 
-        #endregion
+        #endregion Specifications Protected Methods
 
         #region Helpers Methods
 
@@ -206,6 +203,6 @@ namespace PGP.Infrastructure.Framework.Repositories
             SpecService.Assert(entity, specifications);
         }
 
-        #endregion
+        #endregion Helpers Methods
     }
 }

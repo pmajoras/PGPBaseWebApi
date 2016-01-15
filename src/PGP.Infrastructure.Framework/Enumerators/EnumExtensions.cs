@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PGP.Infrastructure.Framework.Enumerators
 {
@@ -50,5 +46,4 @@ namespace PGP.Infrastructure.Framework.Enumerators
             return (int)Convert.ChangeType(enumerator, Enum.GetUnderlyingType(enumerator.GetType()));
         }
     }
-
 }
