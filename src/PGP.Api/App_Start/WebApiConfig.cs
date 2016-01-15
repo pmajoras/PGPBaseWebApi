@@ -1,9 +1,10 @@
 ﻿using System.Web.Http;
-using System.Web.Http.Tracing;
 using PGP.Api.ApiMessageHandlers;
 using PGP.Api.App_Start;
-using PGP.Api.Loggers;
+using PGP.Api.Loggers.ImplementedLoggers;
+using PGP.Infrastructure.Framework.WebApi.ApiLogs;
 using PGP.Infrastructure.Framework.WebApi.Extensions;
+using PGP.Infrastructure.Framework.WebApi.Helpers;
 
 namespace PGP.Api
 {
@@ -11,10 +12,10 @@ namespace PGP.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Services.Replace(typeof(ITraceWriter), new NLogger());
-
+            ApiServicesHelper.RegisterService<IPGPLogger>(new PGPApiLogger());
             // Web API configuration and services
-            ErrorHandlersConfig.SetupExceptionHandlers(config, new MessageHandler(), config.Services.GetApiTraceWriter());
+            ErrorHandlersConfig.SetupExceptionHandlers(config, new MessageHandler(),
+                config.Services.GetCurrentApiLogger());
             FormattersConfig.SetupApiFormatters(config);
 
             // Web API routes

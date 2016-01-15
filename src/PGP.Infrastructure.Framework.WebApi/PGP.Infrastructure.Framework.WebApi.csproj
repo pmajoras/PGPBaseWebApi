@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiLogs\IApiTracer.cs" />
+    <Compile Include="ApiLogs\IPGPLogger.cs" />
     <Compile Include="ApiMessagesHandlers\IApiMessageHandler.cs" />
     <Compile Include="ActionFilters\ApiLogAttribute.cs" />
     <Compile Include="Controllers\ControllersExtensions.cs" />
@@ -63,6 +63,7 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\ServicesContainerExtensions.cs" />
     <Compile Include="Formatters\StandardJsonFormatter.cs" />
+    <Compile Include="Helpers\ApiServicesHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="HttpActionResults\ApiResult.cs" />
     <Compile Include="HttpActionResults\ApiResultsHelper.cs" />

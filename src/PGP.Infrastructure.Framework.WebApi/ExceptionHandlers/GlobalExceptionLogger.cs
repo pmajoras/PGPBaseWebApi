@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web.Http.ExceptionHandling;
-using System.Web.Http.Tracing;
+﻿using System.Web.Http.ExceptionHandling;
 using PGP.Infrastructure.Framework.WebApi.ApiLogs;
 
 namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
@@ -10,27 +8,28 @@ namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
     /// </summary>
     public class GlobalExceptionLogger : ExceptionLogger
     {
-        private IApiTracer m_apiTracer;
+        private IPGPLogger m_apiLogger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GlobalExceptionLogger"/> class.
         /// </summary>
-        public GlobalExceptionLogger(IApiTracer apiTracer)
+        public GlobalExceptionLogger(IPGPLogger apiLogger)
         {
-            m_apiTracer = apiTracer;
+            m_apiLogger = apiLogger;
         }
 
         public override void Log(ExceptionLoggerContext context)
         {
-            m_apiTracer.Error(context.Request, "Controller : " + context.ExceptionContext.
-                ActionContext.
-                ControllerContext.
-                ControllerDescriptor.ControllerType.FullName +
-                Environment.NewLine +
-                "Action : " + context.ExceptionContext.ActionContext.ActionDescriptor.ActionName,
-                context.Exception);
+            //context.Request, "Controller : " + context.ExceptionContext.
+            //    ActionContext.
+            //    ControllerContext.
+            //    ControllerDescriptor.ControllerType.FullName +
+            //    Environment.NewLine +
+            //    "Action : " + context.ExceptionContext.ActionContext.ActionDescriptor.ActionName,
+            //    context.Exception
 
-            base.Log(context);
+            // TODO
+            m_apiLogger.Error("MONTAR MENSAGEM DE ERRO");
         }
     }
 }

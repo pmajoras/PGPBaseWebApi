@@ -16,13 +16,13 @@ namespace PGP.Api.App_Start
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         /// <param name="messageHandler">The message handler.</param>
-        /// <param name="apiTracer">The API tracer.</param>
+        /// <param name="pgpLogger">The PGP logger.</param>
         public static void SetupExceptionHandlers(
             HttpConfiguration configuration,
             IApiMessageHandler messageHandler,
-            IApiTracer apiTracer)
+            IPGPLogger pgpLogger)
         {
-            configuration.Services.Add(typeof(IExceptionLogger), new GlobalExceptionLogger(apiTracer));
+            configuration.Services.Add(typeof(IExceptionLogger), new GlobalExceptionLogger(pgpLogger));
             configuration.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler(messageHandler));
         }
     }

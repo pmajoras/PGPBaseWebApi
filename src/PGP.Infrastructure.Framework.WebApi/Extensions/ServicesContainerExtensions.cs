@@ -1,19 +1,27 @@
-﻿using System.Web.Http;
+﻿using System;
 using System.Web.Http.Controllers;
 using PGP.Infrastructure.Framework.WebApi.ApiLogs;
+using PGP.Infrastructure.Framework.WebApi.Helpers;
 
 namespace PGP.Infrastructure.Framework.WebApi.Extensions
 {
     public static class ServicesContainerExtensions
     {
         /// <summary>
-        /// Gets the API trace writer.
+        /// Gets the current API logger.
         /// </summary>
-        /// <param name="services">The services.</param>
+        /// <param name="service">The service.</param>
         /// <returns></returns>
-        public static IApiTracer GetApiTraceWriter(this ServicesContainer services)
+        /// <exception cref="System.InvalidOperationException">The IPGPLogger is not registered in the Api Services.</exception>
+        public static IPGPLogger GetCurrentApiLogger(this ServicesContainer service)
         {
-            return services.GetTraceWriter() as IApiTracer;
+            var logger = ApiServicesHelper.GetRegisteredService<IPGPLogger>();
+            if (logger == null)
+            {
+                throw new InvalidOperationException("The IPGPLogger is not registered in the ApiServiceHelper.");
+            }
+
+            return logger;
         }
     }
 }

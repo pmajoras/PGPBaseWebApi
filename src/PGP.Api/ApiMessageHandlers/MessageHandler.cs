@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using Newtonsoft.Json;
+using PGP.Api.Messages;
 using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
 using PGP.Infrastructure.Framework.WebApi.Helpers;
 using PGP.Infrastructure.Framework.WebApi.Models;
@@ -44,7 +45,6 @@ namespace PGP.Api.ApiMessageHandlers
         /// </summary>
         /// <param name="code">The code.</param>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public ErrorContent GetErrorFromCode(int code)
         {
             string errorMessage = string.Empty;
@@ -61,20 +61,18 @@ namespace PGP.Api.ApiMessageHandlers
         /// </summary>
         /// <param name="enumCode">The enum code.</param>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public ErrorContent GetErrorFromEnum(Enum enumCode)
         {
-            throw new NotImplementedException();
+            return GetErrorFromCode(Convert.ToInt32(enumCode));
         }
 
         /// <summary>
         /// Gets the generic error code.
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public int GetGenericErrorCode()
         {
-            throw new NotImplementedException();
+            return (int)ApiMessageCode.Error;
         }
 
         /// <summary>
@@ -82,10 +80,17 @@ namespace PGP.Api.ApiMessageHandlers
         /// </summary>
         /// <param name="code">The code.</param>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public string GetMessageFromCode(int code)
         {
-            throw new NotImplementedException();
+            var errorContent = GetErrorFromCode(code);
+
+            string message = string.Empty;
+            if (errorContent != null)
+            {
+                message = errorContent.Message;
+            }
+
+            return message;
         }
 
         /// <summary>
@@ -93,10 +98,17 @@ namespace PGP.Api.ApiMessageHandlers
         /// </summary>
         /// <param name="enumCode">The enum code.</param>
         /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public string GetMessageFromEnum(Enum enumCode)
         {
-            throw new NotImplementedException();
+            var errorContent = GetErrorFromEnum(enumCode);
+
+            string message = string.Empty;
+            if (errorContent != null)
+            {
+                message = errorContent.Message;
+            }
+
+            return message;
         }
 
         #endregion Interface Methods

@@ -1,156 +1,116 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Web.Http.Tracing;
 using NLog;
 using PGP.Infrastructure.Framework.WebApi.ApiLogs;
-using PGP.Infrastructure.Framework.WebApi.Extensions;
 
 namespace PGP.Api.Loggers
 {
-    public sealed class NLogger : IApiTracer
+    /// <summary>
+    /// The class that will log the messages using Nlog
+    /// </summary>
+    public abstract class NLogger : IPGPLogger
     {
-        #region Private member variables.
-
         /// <summary>
         /// The NLogger class that is used to log the message.
         /// </summary>
-        private static readonly Logger s_classLogger = LogManager.GetCurrentClassLogger();
+        protected abstract Logger m_classLogger { get; set; }
 
-        private static readonly Lazy<Dictionary<TraceLevel, Action<string>>> s_loggingMap = new Lazy<Dictionary<TraceLevel,
-            Action<string>>>(() => new Dictionary<TraceLevel, Action<string>>
-            {
-                { TraceLevel.Info, s_classLogger.Info },
-                { TraceLevel.Debug, s_classLogger.Debug },
-                { TraceLevel.Error, s_classLogger.Error },
-                { TraceLevel.Fatal, s_classLogger.Fatal },
-                { TraceLevel.Warn, s_classLogger.Warn } }
-            );
-
-        #endregion Private member variables.
-
-        #region Private properties.
+        #region Constructors
 
         /// <summary>
-        /// Get property for Logger
+        /// Initializes a new instance of the <see cref="NLogger"/> class.
         /// </summary>
-        private Dictionary<TraceLevel, Action<string>> m_logger
+        public NLogger()
         {
-            get { return s_loggingMap.Value; }
         }
 
-        #endregion Private properties.
+        #endregion Constructors
 
-        #region Public member methods.
+        #region Interface Methods
 
         /// <summary>
-        /// Invokes the specified traceAction to allow setting values in a new <see cref="T:System.Web.Http.Tracing.TraceRecord" /> if and only if tracing is permitted at the given category and level.
+        /// Logs a Debug message.
         /// </summary>
-        /// <param name="request">The current <see cref="T:System.Net.Http.HttpRequestMessage" />.   It may be null but doing so will prevent subsequent trace analysis  from correlating the trace to a particular request.</param>
-        /// <param name="category">The logical category for the trace.  Users can define their own.</param>
-        /// <param name="level">The <see cref="T:System.Web.Http.Tracing.TraceLevel" /> at which to write this trace.</param>
-        /// <param name="traceAction">The action to invoke if tracing is enabled.  The caller is expected to fill in the fields of the given <see cref="T:System.Web.Http.Tracing.TraceRecord" /> in this action.</param>
-        public void Trace(HttpRequestMessage request, string category, TraceLevel level, Action<TraceRecord> traceAction)
+        /// <param name="message">The message.</param>
+        public void Debug(string message)
         {
-            if (level != TraceLevel.Off)
-            {
-                if (traceAction != null && traceAction.Target != null)
-                {
-                    category = category + Environment.NewLine + "Action Parameters : " + traceAction.Target.ToJSON();
-                }
-
-                var record = new TraceRecord(request, category, level);
-
-                if (traceAction != null) traceAction(record);
-                Log(record);
-            }
+            Log(LogLevel.Debug, message);
         }
 
-        #endregion Public member methods.
-
-        #region Private member methods.
+        /// <summary>
+        /// Logs an Information message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void Info(string message)
+        {
+            Log(LogLevel.Info, message);
+        }
 
         /// <summary>
-        /// Logs info/Error to Log file
+        /// Logs an errors message.
         /// </summary>
-        /// <param name="record"></param>
-        private void Log(TraceRecord record)
+        /// <param name="message">The message.</param>
+        public void Error(string message)
         {
-            var message = new StringBuilder();
+            Log(LogLevel.Error, message);
+        }
 
-            if (!string.IsNullOrWhiteSpace(record.Message))
-                message.Append("").Append(record.Message + Environment.NewLine);
+        /// <summary>
+        /// Logs a warning message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void Warning(string message)
+        {
+            Log(LogLevel.Warn, message);
+        }
 
-            if (record.Request != null)
+        /// <summary>
+        /// Logs a fatal error message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void Fatal(string message)
+        {
+            Log(LogLevel.Fatal, message);
+        }
+
+        /// <summary>
+        /// Traces the specified message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void Trace(string message)
+        {
+            Log(LogLevel.Trace, message);
+        }
+
+        #endregion Interface Methods
+
+        #region Private Methods
+
+        /// <summary>
+        /// Logs the specified log level.
+        /// </summary>
+        /// <param name="logLevel">The log level.</param>
+        /// <param name="message">The message.</param>
+        private void Log(LogLevel logLevel, string message)
+        {
+            if (message == null)
             {
-                if (record.Request.Method != null)
-                {
-                    message.Append("Method: " + record.Request.Method + Environment.NewLine);
-                }
-
-                if (record.Request.RequestUri != null)
-                {
-                    message.Append("").Append("URL: " + record.Request.RequestUri + Environment.NewLine);
-                }
-
-                if (record.Request.Headers != null &&
-                    record.Request.Headers.Contains("Token") &&
-                    record.Request.Headers.GetValues("Token") != null &&
-                    record.Request.Headers.GetValues("Token").FirstOrDefault() != null)
-                {
-                    message.Append("").Append("Token: " + record.Request.Headers.GetValues("Token").FirstOrDefault() + Environment.NewLine);
-                }
+                message = string.Empty;
             }
 
-            if (!string.IsNullOrWhiteSpace(record.Category))
-                message.Append("").Append(record.Category);
-
-            if (!string.IsNullOrWhiteSpace(record.Operator))
-                message.Append(" ").Append(record.Operator).Append(" ").Append(record.Operation);
-
-            s_classLogger.Log(GetLogLevel(record.Level), Convert.ToString(message) + Environment.NewLine);
-        }
-
-        /// <summary>
-        /// Gets the log level.
-        /// </summary>
-        /// <param name="level">The level.</param>
-        /// <returns></returns>
-        private LogLevel GetLogLevel(TraceLevel level)
-        {
-            LogLevel returnLogLevel = null;
-            switch (level)
+            if (m_classLogger == null)
             {
-                case TraceLevel.Debug:
-                    returnLogLevel = LogLevel.Debug;
-                    break;
-
-                case TraceLevel.Info:
-                    returnLogLevel = LogLevel.Info;
-                    break;
-
-                case TraceLevel.Warn:
-                    returnLogLevel = LogLevel.Warn;
-                    break;
-
-                case TraceLevel.Error:
-                    returnLogLevel = LogLevel.Error;
-                    break;
-
-                case TraceLevel.Fatal:
-                    returnLogLevel = LogLevel.Fatal;
-                    break;
-
-                case TraceLevel.Off:
-                    returnLogLevel = LogLevel.Off;
-                    break;
+                m_classLogger = LogManager.GetCurrentClassLogger();
             }
 
-            return returnLogLevel;
+            m_classLogger.Log(logLevel,
+                new StringBuilder()
+                .Append(Environment.NewLine)
+                .Append(message)
+                .Append(Environment.NewLine)
+                .ToString());
         }
 
-        #endregion Private member methods.
+        #endregion Private Methods
     }
 }
