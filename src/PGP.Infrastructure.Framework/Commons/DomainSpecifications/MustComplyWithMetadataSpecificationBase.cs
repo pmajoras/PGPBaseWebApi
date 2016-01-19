@@ -104,9 +104,8 @@ namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
             if (m_errorReasons.TryGetValue(attribute.GetType(), out currentError))
             {
                 errorMessage = errorMessage ?? currentError.NotSatisfiedReason;
-                returnError = new DomainSpecificationError(currentError.ErrorCode, errorMessage, fieldName);
+                returnError = new DomainSpecificationError(currentError.ErrorCode ?? -1, errorMessage, fieldName);
             }
-
             return returnError;
         }
 

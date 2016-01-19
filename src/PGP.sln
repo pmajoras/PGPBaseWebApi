@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24627.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{290CB9D3-CE05-48F2-BB12-310B4C1D31D3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{290CB9D3-CE05-48F2-BB12-310B4C1D31D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framework", "PGP.Infrastructure.Framework\PGP.Infrastructure.Framework.csproj", "{38A7C411-A8F2-46AC-8E75-D9CE45C8706D}"
 EndProject
@@ -15,11 +15,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framewor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framework.WebApi", "PGP.Infrastructure.Framework.WebApi\PGP.Infrastructure.Framework.WebApi.csproj", "{2050C8C3-181E-4FD5-8A1F-DDA2DBD7C051}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framework.Repositories.EF", "PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.Repositories.EF.csproj", "{A403CC86-A8ED-4DB2-869F-B83AFAA2D124}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framework.DomainContexts.EF", "PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.DomainContexts.EF.csproj", "{A403CC86-A8ED-4DB2-869F-B83AFAA2D124}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{D984CC29-86BC-4F96-8817-63F0BF5EB182}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Api", "PGP.Api\PGP.Api.csproj", "{535B1713-BFF7-4AAF-A46F-12C3D332226E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3BC808E2-1207-4489-A5B7-3667F5A20A31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Repositories", "PGP.Infrastructure.Repositories\PGP.Infrastructure.Repositories.csproj", "{6FB230D2-BC28-4C49-8B81-2D5FAD12DC37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8AADA0C8-86C2-4DDB-9D26-1E49629472CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Domain", "PGP.Domain\PGP.Domain.csproj", "{B44F162E-5A65-4D92-A634-6A50854DC434}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +63,14 @@ Global
 		{535B1713-BFF7-4AAF-A46F-12C3D332226E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{535B1713-BFF7-4AAF-A46F-12C3D332226E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{535B1713-BFF7-4AAF-A46F-12C3D332226E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB230D2-BC28-4C49-8B81-2D5FAD12DC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB230D2-BC28-4C49-8B81-2D5FAD12DC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB230D2-BC28-4C49-8B81-2D5FAD12DC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB230D2-BC28-4C49-8B81-2D5FAD12DC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B44F162E-5A65-4D92-A634-6A50854DC434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B44F162E-5A65-4D92-A634-6A50854DC434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B44F162E-5A65-4D92-A634-6A50854DC434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B44F162E-5A65-4D92-A634-6A50854DC434}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +83,7 @@ Global
 		{2050C8C3-181E-4FD5-8A1F-DDA2DBD7C051} = {290CB9D3-CE05-48F2-BB12-310B4C1D31D3}
 		{A403CC86-A8ED-4DB2-869F-B83AFAA2D124} = {290CB9D3-CE05-48F2-BB12-310B4C1D31D3}
 		{535B1713-BFF7-4AAF-A46F-12C3D332226E} = {D984CC29-86BC-4F96-8817-63F0BF5EB182}
+		{6FB230D2-BC28-4C49-8B81-2D5FAD12DC37} = {3BC808E2-1207-4489-A5B7-3667F5A20A31}
+		{B44F162E-5A65-4D92-A634-6A50854DC434} = {8AADA0C8-86C2-4DDB-9D26-1E49629472CC}
 	EndGlobalSection
 EndGlobal

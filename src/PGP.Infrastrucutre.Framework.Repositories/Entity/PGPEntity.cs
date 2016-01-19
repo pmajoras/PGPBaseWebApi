@@ -11,7 +11,7 @@
         /// <value>
         /// The identifier.
         /// </value>
-        public int Id
+        public long Id
         {
             get; set;
         }

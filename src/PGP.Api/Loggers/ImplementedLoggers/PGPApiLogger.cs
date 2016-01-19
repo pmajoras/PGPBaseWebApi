@@ -20,10 +20,6 @@ namespace PGP.Api.Loggers.ImplementedLoggers
         /// </summary>
         public PGPApiLogger()
         {
-            if (m_classLogger == null)
-            {
-                m_classLogger = LogManager.GetCurrentClassLogger();
-            }
         }
 
         #endregion Constructors

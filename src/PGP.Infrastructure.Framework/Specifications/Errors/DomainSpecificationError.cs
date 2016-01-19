@@ -20,6 +20,17 @@
             FieldName = fieldName;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DomainSpecificationError"/> class.
+        /// </summary>
+        /// <param name="notSatisfiedReason">The not satisfied reason.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        public DomainSpecificationError(string notSatisfiedReason, string fieldName = null)
+        {
+            NotSatisfiedReason = notSatisfiedReason;
+            FieldName = fieldName;
+        }
+
         #endregion Constructors
 
         #region Public Properties
@@ -30,7 +41,7 @@
         /// <value>
         /// The error code.
         /// </value>
-        public int ErrorCode { get; protected set; }
+        public int? ErrorCode { get; protected set; }
 
         /// <summary>
         /// Gets or sets the not satisfied reason.

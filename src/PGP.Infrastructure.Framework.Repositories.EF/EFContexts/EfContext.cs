@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using HelperSharp;
+using PGP.Infrastructure.Framework.Repositories;
 
-namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
+namespace PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts
 {
     /// <summary>
     ///
     /// </summary>
-    public abstract class EfContext : DbContext, IDomainContext
+    public abstract class EFContext : DbContext, IDomainContext
     {
         #region Private Properties
 
@@ -29,9 +30,9 @@ namespace PGP.Infrastructure.Framework.Repositories.EF.EFContexts
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EfContext"/> class.
+        /// Initializes a new instance of the <see cref="EFContext"/> class.
         /// </summary>
-        public EfContext()
+        public EFContext()
         {
         }
 

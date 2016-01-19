@@ -154,9 +154,9 @@
     <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.Repositories.EF.csproj">
+    <ProjectReference Include="..\PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.DomainContexts.EF.csproj">
       <Project>{a403cc86-a8ed-4db2-869f-b83afaa2d124}</Project>
-      <Name>PGP.Infrastructure.Framework.Repositories.EF</Name>
+      <Name>PGP.Infrastructure.Framework.DomainContexts.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGP.Infrastructure.Framework.WebApi\PGP.Infrastructure.Framework.WebApi.csproj">
       <Project>{2050c8c3-181e-4fd5-8a1f-dda2dbd7c051}</Project>

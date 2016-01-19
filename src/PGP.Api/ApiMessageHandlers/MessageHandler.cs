@@ -17,11 +17,6 @@ namespace PGP.Api.ApiMessageHandlers
     {
         #region Private Properties
 
-        /// <summary>
-        /// The m_api messages json path
-        /// </summary>
-        private string m_apiMessagesJsonPath;
-
         private Dictionary<int, string> m_errorList = new Dictionary<int, string>();
 
         #endregion Private Properties
@@ -123,8 +118,7 @@ namespace PGP.Api.ApiMessageHandlers
         {
             try
             {
-                m_apiMessagesJsonPath = ConfigurationManager.AppSettings["ApiMessagesJson"];
-                var jsonFile = File.ReadAllText(m_apiMessagesJsonPath);
+                var jsonFile = File.ReadAllText(ConfigurationManager.AppSettings["ApiMessagesJson"]);
                 var messages = JsonConvert
                     .DeserializeObject<Dictionary<string, string>>(jsonFile, JsonHelper.SetDefaultJsonSerializerSettings(new JsonSerializerSettings()));
 

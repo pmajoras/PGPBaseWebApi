@@ -101,10 +101,10 @@ namespace PGP.Infrastructure.Framework.Repositories
         public TEntity GetById<TEntity>(object id)
             where TEntity : class, IEntity
         {
-            var intId = 0;
-            if (id is int)
+            long intId = 0;
+            if (id is long)
             {
-                intId = (int)id;
+                intId = (long)id;
             }
 
             var query = GetSpecificListFromDictionary<TEntity>(m_memoryDatabase);
