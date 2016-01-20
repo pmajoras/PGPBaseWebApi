@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Reflection;
 using HelperSharp;
 
 namespace PGP.Infrastructure.Framework.PropertyHelpers
@@ -35,6 +36,26 @@ namespace PGP.Infrastructure.Framework.PropertyHelpers
 
             result = result.Remove(result.Length - 1); // remove the trailing "."
             return result;
+        }
+
+        /// <summary>
+        /// Gets the name of the property.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyLambda">The property lambda.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentException">You must pass a lambda of the form: '() => Class.Property' or '() => object.Property' or 'x=> x.Property'</exception>
+        public static MemberInfo GetMemberInfo<T, TPropertyType>(Expression<Func<T, TPropertyType>> propertyLambda)
+        {
+            ExceptionHelper.ThrowIfNull("propertyLambda", propertyLambda);
+
+            MemberExpression me = propertyLambda.Body as MemberExpression;
+            if (me == null)
+            {
+                throw new ArgumentException("You must pass a lambda of the form: '() => Class.Property' or '() => object.Property' or 'x=> x.Property'");
+            }
+
+            return me.Member;
         }
     }
 }

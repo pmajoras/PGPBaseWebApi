@@ -10,7 +10,7 @@ namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
     /// The Class responsable for the global exception handler of the API.
     /// </summary>
     public class GlobalExceptionHandler : ExceptionHandler
-    {        
+    {
         private IApiMessageHandler m_apiMessageHandler;
 
         /// <summary>

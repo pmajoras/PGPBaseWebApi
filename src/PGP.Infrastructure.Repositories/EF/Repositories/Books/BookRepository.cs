@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PGP.Domain.Books;
+﻿using PGP.Domain.Books;
 using PGP.Infrastructure.Framework.Repositories;
 
 namespace PGP.Infrastructure.Repositories.EF.Repositories.Books
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class BookRepository : EFGenericRepository<Book>, IBookRepository
     {
@@ -20,7 +15,6 @@ namespace PGP.Infrastructure.Repositories.EF.Repositories.Books
         public BookRepository(IDomainContext context)
             : base(context)
         {
-
         }
     }
 }

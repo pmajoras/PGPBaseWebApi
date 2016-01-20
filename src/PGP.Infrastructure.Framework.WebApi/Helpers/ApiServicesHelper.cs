@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PGP.Infrastructure.Framework.WebApi.Helpers
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public static class ApiServicesHelper
     {

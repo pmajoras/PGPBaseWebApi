@@ -26,8 +26,6 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
 
             if (notSatisfiedSpecifications != null && notSatisfiedSpecifications.Any())
             {
-
-
                 foreach (ISpecification<TTarget> specification in notSatisfiedSpecifications)
                 {
                     if (specification is IDomainSpecification<TTarget>)

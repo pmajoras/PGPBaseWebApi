@@ -1,12 +1,11 @@
-﻿using Escrutinador.Extensions.EntityFramework;
-using PGP.Domain.Books;
+﻿using PGP.Domain.Books;
 
 namespace PGP.Infrastructure.Repositories.EF.Mappings.Books
 {
     /// <summary>
     ///
     /// </summary>
-    public class BookMap : MetadataEntityTypeConfiguration<Book>
+    public class BookMap : BaseEntityTypeConfiguration<Book>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BookMap"/> class.
