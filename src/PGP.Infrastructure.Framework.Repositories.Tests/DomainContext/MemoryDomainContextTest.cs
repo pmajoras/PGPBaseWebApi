@@ -9,6 +9,7 @@ namespace PGP.Infrastructure.Framework.Tests.DomainContext
     /// <summary>
     /// Test class for MemoryDomainContext
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]
     [TestClass]
     public class MemoryDomainContextTest
     {

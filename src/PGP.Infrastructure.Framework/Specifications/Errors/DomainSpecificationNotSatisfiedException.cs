@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using KissSpecifications;
 
 namespace PGP.Infrastructure.Framework.Specifications.Errors
@@ -9,6 +10,7 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
     /// A DomainSpecification Not Satisfied Exception class.
     /// </summary>
     /// <typeparam name="TTarget">The type of the target.</typeparam>
+    [Serializable]
     public class DomainSpecificationNotSatisfiedException<TTarget> : Exception
     {
         #region Constructors
@@ -60,6 +62,11 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
         public override string ToString()
         {
             return string.Join(Environment.NewLine, Errors.Select(x => x.NotSatisfiedReason));
+        }
+
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            base.GetObjectData(info, context);
         }
     }
 }
