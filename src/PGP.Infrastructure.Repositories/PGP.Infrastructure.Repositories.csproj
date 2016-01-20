@@ -30,6 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escrutinador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escrutinador.0.0.3\lib\net45\Escrutinador.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escrutinador.Extensions.EntityFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escrutinador.Extensions.EntityFramework.0.0.2\lib\net45\Escrutinador.Extensions.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HelperSharp, Version=1.0.5560.27038, Culture=neutral, PublicKeyToken=3d44152485e1a4e1, processorArchitecture=MSIL">
       <HintPath>..\packages\HelperSharp.0.0.4.2\lib\net35\HelperSharp.dll</HintPath>
       <Private>True</Private>
@@ -39,6 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,19 +66,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\EFGenericRepository.cs" />
+    <Compile Include="EF\Mappings\Books\BookMap.cs" />
+    <Compile Include="EF\Repositories\Books\BookRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="EF\Mappings\" />
-    <Folder Include="EF\Repositories\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
+      <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>
+      <Name>PGP.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PGP.Infrastrucutre.Framework.Repositories\PGP.Infrastrucutre.Framework.Repositories.csproj">
       <Project>{c4bbafad-0381-444c-84e2-4bdcc6ce3f1e}</Project>
       <Name>PGP.Infrastrucutre.Framework.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

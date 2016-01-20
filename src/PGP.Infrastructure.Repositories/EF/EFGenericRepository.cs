@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PGP.Infrastructure.Framework.Repositories;
 
 namespace PGP.Infrastructure.Repositories.EF
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
     public class EFGenericRepository<TEntity> : PGPRepository<TEntity>
@@ -23,7 +19,6 @@ namespace PGP.Infrastructure.Repositories.EF
         public EFGenericRepository(IDomainContext context)
             : base(context)
         {
-
         }
 
         /// <summary>
@@ -33,10 +28,9 @@ namespace PGP.Infrastructure.Repositories.EF
         public EFGenericRepository(Func<IDomainContext> func)
             : base(func.Invoke())
         {
-
         }
 
-        #endregion
+        #endregion Constructors
 
         /// <summary>
         /// Befores the delete new item.

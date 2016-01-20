@@ -49,6 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Books\Book.cs" />
+    <Compile Include="Books\BookService.cs" />
+    <Compile Include="Books\IBookRepository.cs" />
+    <Compile Include="Books\IBookService.cs" />
+    <Compile Include="DomainServiceBase.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

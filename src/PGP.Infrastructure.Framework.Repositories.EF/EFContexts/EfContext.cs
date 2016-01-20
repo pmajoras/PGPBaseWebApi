@@ -27,17 +27,6 @@ namespace PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts
 
         #endregion Protected Properties
 
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EFContext"/> class.
-        /// </summary>
-        public EFContext()
-        {
-        }
-
-        #endregion Constructors
-
         #region Interface Methods
 
         /// <summary>
@@ -263,21 +252,12 @@ namespace PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="entity">The entity.</param>
         /// <param name="state">The state.</param>
-        /// <param name="stateToDiff">The state to difference.</param>
-        private void RegisterState<TEntity>(TEntity entity, EntityState state, EntityState? stateToDiff = null) where TEntity : class, IEntity
+        private void RegisterState<TEntity>(TEntity entity, EntityState state) where TEntity : class, IEntity
         {
             ExceptionHelper.ThrowIfNull("entity", entity);
 
-            if (!stateToDiff.HasValue)
-            {
-                stateToDiff = state;
-            }
-
             var entry = Entry(entity);
-            if (entry.State != stateToDiff)
-            {
-                entry.State = state;
-            }
+            entry.State = state;
         }
 
         #endregion Private Helpers
