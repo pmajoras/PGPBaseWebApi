@@ -1,4 +1,5 @@
-﻿using PGP.Infrastructure.Framework.Repositories;
+﻿using System;
+using PGP.Infrastructure.Framework.Repositories;
 
 namespace PGP.Domain
 {
@@ -19,6 +20,19 @@ namespace PGP.Domain
         public DomainServiceBase(IUnitOfWork unitOfWork, TRepository repository)
             : base(unitOfWork, repository)
         {
+        }
+
+        public override void SaveEntity(TEntity entity)
+        {
+            if (entity is EntityBase)
+            {
+                (entity as EntityBase).Stamp = new ActionStamp()
+                {
+                    CreationDate = DateTime.Now
+                };
+            }
+
+            base.SaveEntity(entity);
         }
     }
 }

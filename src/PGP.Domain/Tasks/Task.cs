@@ -1,20 +1,24 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PGP.Domain.Books
+namespace PGP.Domain.Tasks
 {
     /// <summary>
     ///
     /// </summary>
-    public class Book : EntityBase
+    public class Task : EntityBase
     {
         #region Public Properties
 
+        /// <summary>
+        /// Gets or sets the task name.
+        /// </summary>
+        /// <value>
+        /// The task name.
+        /// </value>
         [Required]
         [StringLength(300)]
         public string Name { get; set; }
-
-        public DateTime ReleaseDate { get; set; }
 
         #endregion Public Properties
     }

@@ -1,8 +1,0 @@
-﻿using PGP.Infrastructure.Framework.Repositories;
-
-namespace PGP.Domain.Books
-{
-    public interface IBookService : IDomainService<Book>
-    {
-    }
-}

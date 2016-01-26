@@ -1,5 +1,4 @@
 ﻿using PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts;
-using PGP.Infrastructure.Repositories.EF.Mappings.Books;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,6 +6,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PGP.Infrastructure.Repositories.EF.Mappings.Tasks;
 
 namespace PGP.Infrastructure.Repositories.EF
 {
@@ -51,7 +51,7 @@ namespace PGP.Infrastructure.Repositories.EF
                 throw new ArgumentNullException("modelBuilder");
             }
 
-            modelBuilder.Configurations.AddFromAssembly(typeof(BookMap).Assembly);
+            modelBuilder.Configurations.AddFromAssembly(typeof(TaskMap).Assembly);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }

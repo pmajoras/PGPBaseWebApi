@@ -51,10 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Books\Book.cs" />
-    <Compile Include="Books\BookService.cs" />
-    <Compile Include="Books\IBookRepository.cs" />
-    <Compile Include="Books\IBookService.cs" />
+    <Compile Include="ActionStamp.cs" />
+    <Compile Include="Tasks\Task.cs" />
+    <Compile Include="Tasks\TaskService.cs" />
+    <Compile Include="Tasks\ITaskRepository.cs" />
+    <Compile Include="Tasks\ITaskService.cs" />
     <Compile Include="DomainServiceBase.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +72,9 @@
       <Project>{c4bbafad-0381-444c-84e2-4bdcc6ce3f1e}</Project>
       <Name>PGP.Infrastrucutre.Framework.Repositories</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tasks\Specs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

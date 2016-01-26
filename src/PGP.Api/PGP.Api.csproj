@@ -139,7 +139,6 @@
     <Compile Include="Loggers\NLogger.cs" />
     <Compile Include="Messages\ApiMessageCode.cs" />
     <Compile Include="Models\Accounts\UserViewModel.cs" />
-    <Compile Include="Models\Books\BookViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,9 +5,7 @@ using PGP.Infrastructure.Framework.WebApi.Controllers;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
 using PGP.Infrastructure.Repositories.EF;
-using PGP.Domain.Books;
 using System.Linq;
-using PGP.Api.Models.Books;
 using System;
 
 namespace PGP.Api.Controllers

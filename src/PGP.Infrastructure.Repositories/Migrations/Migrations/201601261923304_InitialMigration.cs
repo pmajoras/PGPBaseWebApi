@@ -3,17 +3,17 @@ namespace PGP.Infrastructure.Repositories.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstMIgration : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Book",
+                "dbo.Tasks",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        Name = c.String(),
-                        ReleaseDate = c.DateTime(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 300),
+                        CreationDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -21,7 +21,7 @@ namespace PGP.Infrastructure.Repositories.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.Book");
+            DropTable("dbo.Tasks");
         }
     }
 }
