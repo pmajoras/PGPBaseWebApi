@@ -59,17 +59,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\EFBaseContext.cs" />
     <Compile Include="EF\EFGenericRepository.cs" />
     <Compile Include="EF\Mappings\BaseEntityTypeConfiguration.cs" />
     <Compile Include="EF\Mappings\Books\BookMap.cs" />
     <Compile Include="EF\Repositories\Books\BookRepository.cs" />
+    <Compile Include="Migrations\Migrations\201601260145590_SecondMigration.cs" />
+    <Compile Include="Migrations\Migrations\201601260145590_SecondMigration.Designer.cs">
+      <DependentUpon>201601260145590_SecondMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Migrations\201601260131478_FirstMIgration.cs" />
+    <Compile Include="Migrations\Migrations\201601260131478_FirstMIgration.Designer.cs">
+      <DependentUpon>201601260131478_FirstMIgration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
       <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>
       <Name>PGP.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.DomainContexts.EF.csproj">
+      <Project>{a403cc86-a8ed-4db2-869f-b83afaa2d124}</Project>
+      <Name>PGP.Infrastructure.Framework.DomainContexts.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGP.Infrastructure.Framework\PGP.Infrastructure.Framework.csproj">
       <Project>{38a7c411-a8f2-46ac-8e75-d9ce45c8706d}</Project>
@@ -83,6 +96,15 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\Migrations\201601260145590_SecondMigration.resx">
+      <DependentUpon>201601260145590_SecondMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Migrations\201601260131478_FirstMIgration.resx">
+      <DependentUpon>201601260131478_FirstMIgration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PGP.Domain.Books
 {
@@ -9,6 +10,8 @@ namespace PGP.Domain.Books
     {
         #region Public Properties
 
+        [Required]
+        [StringLength(300)]
         public string Name { get; set; }
 
         public DateTime ReleaseDate { get; set; }

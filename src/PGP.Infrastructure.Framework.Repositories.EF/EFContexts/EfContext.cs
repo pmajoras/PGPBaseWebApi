@@ -27,6 +27,28 @@ namespace PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts
 
         #endregion Protected Properties
 
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EFContext"/> class.
+        /// </summary>
+        public EFContext()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EFContext"/> class.
+        /// </summary>
+        /// <param name="nameOrConnectionString">Either the database name or a connection string.</param>
+        public EFContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+
+        }
+
+        #endregion
+
         #region Interface Methods
 
         /// <summary>

@@ -22,6 +22,20 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// </summary>
         /// <param name="content">The content.</param>
         /// <exception cref="System.ArgumentNullException">content;The content of the response cannot be null.</exception>
+        public ApiResponse(object content)
+        {
+            if (content == null)
+            {
+                throw new ArgumentNullException("content", "The content of the response cannot be null.");
+            }
+            Content = content;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiResponse"/> class.
+        /// </summary>
+        /// <param name="content">The content.</param>
+        /// <exception cref="System.ArgumentNullException">content;The content of the response cannot be null.</exception>
         public ApiResponse(IViewModel content)
         {
             if (content == null)
@@ -68,7 +82,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// <value>
         /// The content.
         /// </value>
-        public IViewModel Content { get; set; }
+        public object Content { get; set; }
 
         /// <summary>
         /// Gets or sets the errors of the response.

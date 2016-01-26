@@ -3,6 +3,7 @@ using System.Web.Http;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
 using PGP.Infrastructure.Framework.WebApi.Models;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
+using System.Collections.Generic;
 
 namespace PGP.Infrastructure.Framework.WebApi.Controllers
 {
@@ -22,13 +23,11 @@ namespace PGP.Infrastructure.Framework.WebApi.Controllers
         }
 
         /// <summary>
-        /// APIs the response.
+        /// APIs the ok result.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="controller">The controller.</param>
         /// <param name="content">The content.</param>
         /// <returns></returns>
-        public virtual ApiResult<ApiResponse> ApiOkResult<T>(T content) where T : IViewModel
+        public virtual ApiResult<ApiResponse> ApiOkResult(object content)
         {
             return new ApiResult<ApiResponse>(Request, new ApiResponse(content));
         }

@@ -139,6 +139,7 @@
     <Compile Include="Loggers\NLogger.cs" />
     <Compile Include="Messages\ApiMessageCode.cs" />
     <Compile Include="Models\Accounts\UserViewModel.cs" />
+    <Compile Include="Models\Books\BookViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,10 @@
     <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
+      <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>
+      <Name>PGP.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.DomainContexts.EF.csproj">
       <Project>{a403cc86-a8ed-4db2-869f-b83afaa2d124}</Project>
       <Name>PGP.Infrastructure.Framework.DomainContexts.EF</Name>
@@ -168,6 +173,10 @@
     <ProjectReference Include="..\PGP.Infrastructure.Framework\PGP.Infrastructure.Framework.csproj">
       <Project>{38a7c411-a8f2-46ac-8e75-d9ce45c8706d}</Project>
       <Name>PGP.Infrastructure.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastructure.Repositories\PGP.Infrastructure.Repositories.csproj">
+      <Project>{6fb230d2-bc28-4c49-8b81-2d5fad12dc37}</Project>
+      <Name>PGP.Infrastructure.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGP.Infrastrucutre.Framework.Repositories\PGP.Infrastrucutre.Framework.Repositories.csproj">
       <Project>{c4bbafad-0381-444c-84e2-4bdcc6ce3f1e}</Project>
