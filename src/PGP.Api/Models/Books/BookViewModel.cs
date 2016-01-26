@@ -12,11 +12,11 @@ namespace PGP.Api.Models.Books
         /// <summary>
         /// Initializes a new instance of the <see cref="BookViewModel"/> class.
         /// </summary>
-        public BookViewModel(Book book)
+        public BookViewModel()
         {
-            Name = book.Name;
-            ReleaseDate = book.ReleaseDate;
         }
+
+        #region Public Properties
 
         /// <summary>
         /// Gets or sets the name.
@@ -33,5 +33,7 @@ namespace PGP.Api.Models.Books
         /// The release date.
         /// </value>
         public DateTime ReleaseDate { get; set; }
+
+        #endregion
     }
 }

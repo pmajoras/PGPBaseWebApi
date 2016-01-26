@@ -22,16 +22,7 @@ namespace PGP.Infrastructure.Repositories.EF
         /// Initializes a new instance of the <see cref="EFBaseContext"/> class.
         /// </summary>
         public EFBaseContext()
-        {
-
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EFBaseContext"/> class.
-        /// </summary>
-        /// <param name="nameOrConnectionString">Either the database name or a connection string.</param>
-        public EFBaseContext(string nameOrConnectionString)
-            : base(nameOrConnectionString)
+            : base("PGPDatabase")
         {
 
         }
@@ -61,9 +52,7 @@ namespace PGP.Infrastructure.Repositories.EF
             }
 
             modelBuilder.Configurations.AddFromAssembly(typeof(BookMap).Assembly);
-
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
 }
