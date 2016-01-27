@@ -5,7 +5,7 @@ namespace PGP.Infrastructure.Framework.Repositories
     /// <summary>
     /// Is the PGP implementation of Unit Of Work Pattern
     /// </summary>
-    public abstract class PGPUnitOfWork : IUnitOfWork
+    public class PGPUnitOfWork : IUnitOfWork
     {
         #region Protected Properties
 

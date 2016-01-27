@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24627.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{290CB9D3-CE05-48F2-BB12-310B4C1D31D3}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Domain", "PGP.Domain\PGP.Domain.csproj", "{B44F162E-5A65-4D92-A634-6A50854DC434}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Domain.Tests", "PGP.Domain.Tests\PGP.Domain.Tests.csproj", "{A7D69977-A986-4453-89F3-79DF560C2A22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framework.Messages", "PGP.Infrastructure.Framework.Messages\PGP.Infrastructure.Framework.Messages.csproj", "{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{A7D69977-A986-4453-89F3-79DF560C2A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D69977-A986-4453-89F3-79DF560C2A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D69977-A986-4453-89F3-79DF560C2A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{6FB230D2-BC28-4C49-8B81-2D5FAD12DC37} = {3BC808E2-1207-4489-A5B7-3667F5A20A31}
 		{B44F162E-5A65-4D92-A634-6A50854DC434} = {8AADA0C8-86C2-4DDB-9D26-1E49629472CC}
 		{A7D69977-A986-4453-89F3-79DF560C2A22} = {8AADA0C8-86C2-4DDB-9D26-1E49629472CC}
+		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8} = {290CB9D3-CE05-48F2-BB12-310B4C1D31D3}
 	EndGlobalSection
 EndGlobal

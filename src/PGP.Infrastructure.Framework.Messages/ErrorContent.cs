@@ -1,4 +1,4 @@
-﻿namespace PGP.Infrastructure.Framework.WebApi.Models
+﻿namespace PGP.Infrastructure.Framework.Messages
 {
     /// <summary>
     ///

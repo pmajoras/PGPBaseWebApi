@@ -83,6 +83,10 @@
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
@@ -128,13 +132,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiMessageHandlers\MessageHandler.cs" />
+    <Compile Include="ApiModules\NinjectApiModule.cs" />
     <Compile Include="App_Start\ErrorHandlersConfig.cs" />
     <Compile Include="App_Start\FormattersConfig.cs" />
+    <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Filters\BearerAuthenticationFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HttpControllerActivators\NinjectKernelActivator.cs" />
     <Compile Include="Loggers\ImplementedLoggers\PGPApiLogger.cs" />
     <Compile Include="Loggers\NLogger.cs" />
     <Compile Include="Messages\ApiMessageCode.cs" />
@@ -154,12 +163,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
       <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>
       <Name>PGP.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastructure.Framework.Messages\PGP.Infrastructure.Framework.Messages.csproj">
+      <Project>{082a0fec-9dbb-4f16-97d9-0f0bab8001d8}</Project>
+      <Name>PGP.Infrastructure.Framework.Messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGP.Infrastructure.Framework.Repositories.EF\PGP.Infrastructure.Framework.DomainContexts.EF.csproj">
       <Project>{a403cc86-a8ed-4db2-869f-b83afaa2d124}</Project>

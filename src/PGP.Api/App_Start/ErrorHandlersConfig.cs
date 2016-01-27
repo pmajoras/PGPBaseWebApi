@@ -1,8 +1,8 @@
 ﻿using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using PGP.Infrastructure.Framework.WebApi.ApiLogs;
-using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
 using PGP.Infrastructure.Framework.WebApi.ExceptionHandlers;
+using PGP.Infrastructure.Framework.Messages.MessageHandlers;
 
 namespace PGP.Api.App_Start
 {
@@ -19,7 +19,7 @@ namespace PGP.Api.App_Start
         /// <param name="pgpLogger">The PGP logger.</param>
         public static void SetupExceptionHandlers(
             HttpConfiguration configuration,
-            IApiMessageHandler messageHandler,
+            IMessageHandler messageHandler,
             IPGPLogger pgpLogger)
         {
             configuration.Services.Add(typeof(IExceptionLogger), new GlobalExceptionLogger(pgpLogger));

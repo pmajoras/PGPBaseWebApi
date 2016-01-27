@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using System.Web;
 using System.Web.Http.ExceptionHandling;
-using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
+using PGP.Infrastructure.Framework.Messages.MessageHandlers;
 
 namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
 {
@@ -11,13 +11,13 @@ namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
     /// </summary>
     public class GlobalExceptionHandler : ExceptionHandler
     {
-        private IApiMessageHandler m_apiMessageHandler;
+        private IMessageHandler m_apiMessageHandler;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GlobalExceptionHandler"/> class.
         /// </summary>
         /// <param name="apiMessageHandler">The API message handler.</param>
-        public GlobalExceptionHandler(IApiMessageHandler apiMessageHandler)
+        public GlobalExceptionHandler(IMessageHandler apiMessageHandler)
         {
             m_apiMessageHandler = apiMessageHandler;
         }

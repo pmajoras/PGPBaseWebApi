@@ -63,8 +63,14 @@
     <Compile Include="EF\EFGenericRepository.cs" />
     <Compile Include="EF\Mappings\BaseEntityTypeConfiguration.cs" />
     <Compile Include="EF\Mappings\ActionStampMap.cs" />
+    <Compile Include="EF\Mappings\TaskLists\TaskListMap.cs" />
     <Compile Include="EF\Mappings\Tasks\TaskMap.cs" />
+    <Compile Include="EF\Repositories\TaskLists\TaskListRepository.cs" />
     <Compile Include="EF\Repositories\Tasks\TaskRepository.cs" />
+    <Compile Include="Migrations\Migrations\201601270039554_TaskListsMap.cs" />
+    <Compile Include="Migrations\Migrations\201601270039554_TaskListsMap.Designer.cs">
+      <DependentUpon>201601270039554_TaskListsMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Migrations\201601261923304_InitialMigration.cs" />
     <Compile Include="Migrations\Migrations\201601261923304_InitialMigration.Designer.cs">
       <DependentUpon>201601261923304_InitialMigration.cs</DependentUpon>
@@ -96,6 +102,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\Migrations\201601270039554_TaskListsMap.resx">
+      <DependentUpon>201601270039554_TaskListsMap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Migrations\201601261923304_InitialMigration.resx">
       <DependentUpon>201601261923304_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>

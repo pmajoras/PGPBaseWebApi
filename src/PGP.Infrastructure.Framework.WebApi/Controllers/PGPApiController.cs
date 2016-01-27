@@ -1,9 +1,8 @@
 ﻿using System.Net;
 using System.Web.Http;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
-using PGP.Infrastructure.Framework.WebApi.Models;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
-using System.Collections.Generic;
+using PGP.Infrastructure.Framework.Messages;
 
 namespace PGP.Infrastructure.Framework.WebApi.Controllers
 {

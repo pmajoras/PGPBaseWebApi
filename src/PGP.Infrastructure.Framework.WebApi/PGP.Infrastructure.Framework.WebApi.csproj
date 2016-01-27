@@ -37,6 +37,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -55,13 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiAuthentication\AuthenticationToken.cs" />
+    <Compile Include="ApiAuthentication\ITokenService.cs" />
+    <Compile Include="ApiAuthentication\GuidTokenService.cs" />
     <Compile Include="ApiLogs\IPGPLogger.cs" />
-    <Compile Include="ApiMessagesHandlers\IApiMessageHandler.cs" />
     <Compile Include="ActionFilters\ApiLogAttribute.cs" />
     <Compile Include="Controllers\ControllersExtensions.cs" />
     <Compile Include="Controllers\PGPApiController.cs" />
     <Compile Include="ExceptionHandlers\GlobalExceptionHandler.cs" />
     <Compile Include="ExceptionHandlers\GlobalExceptionLogger.cs" />
+    <Compile Include="Extensions\HttpActionContextExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\ServicesContainerExtensions.cs" />
     <Compile Include="Formatters\StandardJsonFormatter.cs" />
@@ -71,12 +75,17 @@
     <Compile Include="HttpActionResults\ApiResultsHelper.cs" />
     <Compile Include="Models\IViewModel.cs" />
     <Compile Include="Models\Responses\ApiResponse.cs" />
-    <Compile Include="Models\ErrorContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PGP.Infrastructure.Framework.Messages\PGP.Infrastructure.Framework.Messages.csproj">
+      <Project>{082a0fec-9dbb-4f16-97d9-0f0bab8001d8}</Project>
+      <Name>PGP.Infrastructure.Framework.Messages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

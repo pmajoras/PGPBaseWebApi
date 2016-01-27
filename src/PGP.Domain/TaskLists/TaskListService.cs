@@ -1,18 +1,18 @@
 ﻿using PGP.Infrastructure.Framework.Repositories;
 
-namespace PGP.Domain.Tasks
+namespace PGP.Domain.TaskLists
 {
     /// <summary>
     /// The domain service for the <see cref="Task"/> Entity
     /// </summary>
-    public class TaskService : DomainServiceBase<Task, ITaskRepository>, ITaskService
+    public class TaskListService : DomainServiceBase<TaskList, ITaskListRepository>, ITaskListService
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TaskService"/> class.
+        /// Initializes a new instance of the <see cref="TaskListService"/> class.
         /// </summary>
         /// <param name="unitOfWork">The unit of work.</param>
         /// <param name="repository">The repository.</param>
-        public TaskService(IUnitOfWork unitOfWork, ITaskRepository repository)
+        public TaskListService(IUnitOfWork unitOfWork, ITaskListRepository repository)
             : base(unitOfWork, repository)
         {
         }

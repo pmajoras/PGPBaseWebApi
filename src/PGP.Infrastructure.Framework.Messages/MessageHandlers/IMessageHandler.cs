@@ -1,9 +1,8 @@
 ﻿using System;
-using PGP.Infrastructure.Framework.WebApi.Models;
 
-namespace PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers
+namespace PGP.Infrastructure.Framework.Messages.MessageHandlers
 {
-    public interface IApiMessageHandler
+    public interface IMessageHandler
     {
         /// <summary>
         /// Gets the message from code.

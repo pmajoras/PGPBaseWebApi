@@ -15,12 +15,6 @@ namespace PGP.Infrastructure.Repositories.Migrations
 
         protected override void Seed(EFBaseContext context)
         {
-            context.RegisterNew(new Task()
-            {
-                Name = "teste",
-                Stamp = new Domain.ActionStamp() { CreationDate = DateTime.Now }
-            });
-
             context.SaveContextChanges();
         }
     }

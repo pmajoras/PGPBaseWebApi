@@ -1,4 +1,7 @@
 ﻿{
   "1": "Sucesso",
-  "100": "Erro interno"
+  "100": "Erro interno",
+
+
+  "1001": "A Tarefa deve pertencer a uma lista de tarefas."
 }

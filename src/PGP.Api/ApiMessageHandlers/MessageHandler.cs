@@ -4,20 +4,20 @@ using System.Configuration;
 using System.IO;
 using Newtonsoft.Json;
 using PGP.Api.Messages;
-using PGP.Infrastructure.Framework.WebApi.ApiMessagesHandlers;
 using PGP.Infrastructure.Framework.WebApi.Helpers;
-using PGP.Infrastructure.Framework.WebApi.Models;
+using PGP.Infrastructure.Framework.Messages.MessageHandlers;
+using PGP.Infrastructure.Framework.Messages;
 
 namespace PGP.Api.ApiMessageHandlers
 {
     /// <summary>
     ///
     /// </summary>
-    public class MessageHandler : IApiMessageHandler
+    public class MessageHandler : IMessageHandler
     {
         #region Private Properties
 
-        private Dictionary<int, string> m_errorList = new Dictionary<int, string>();
+        private static Dictionary<int, string> s_errorList = new Dictionary<int, string>();
 
         #endregion Private Properties
 
@@ -43,7 +43,7 @@ namespace PGP.Api.ApiMessageHandlers
         public ErrorContent GetErrorFromCode(int code)
         {
             string errorMessage = string.Empty;
-            if (m_errorList.TryGetValue(code, out errorMessage))
+            if (s_errorList.TryGetValue(code, out errorMessage))
             {
                 return new ErrorContent(errorMessage, code);
             }
@@ -114,7 +114,7 @@ namespace PGP.Api.ApiMessageHandlers
         /// Loads the messages.
         /// </summary>
         /// <exception cref="System.Exception">Error on loading the messages to the message handler</exception>
-        public void LoadMessages()
+        private void LoadMessages()
         {
             try
             {
@@ -122,10 +122,10 @@ namespace PGP.Api.ApiMessageHandlers
                 var messages = JsonConvert
                     .DeserializeObject<Dictionary<string, string>>(jsonFile, JsonHelper.SetDefaultJsonSerializerSettings(new JsonSerializerSettings()));
 
-                m_errorList.Clear();
+                s_errorList.Clear();
                 foreach (var keyValue in messages)
                 {
-                    m_errorList.Add(int.Parse(keyValue.Key), keyValue.Value);
+                    s_errorList.Add(int.Parse(keyValue.Key), keyValue.Value);
                 }
             }
             catch (Exception ex)

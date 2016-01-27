@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PGP.Infrastructure.Framework.Messages;
+using System;
 using System.Collections.Generic;
 
 namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
