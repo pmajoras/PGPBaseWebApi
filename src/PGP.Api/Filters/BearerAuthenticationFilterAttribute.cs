@@ -6,6 +6,8 @@ using System.Net;
 using PGP.Infrastructure.Framework.WebApi.Extensions;
 using PGP.Infrastructure.Framework.WebApi.Helpers;
 using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
+using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
+using PGP.Api.Services.Accounts;
 
 namespace PGP.Api.Filters
 {
@@ -40,7 +42,7 @@ namespace PGP.Api.Filters
 
             if (!tokenService.ValidateToken(token))
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, "Login Inválido");
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new UserCredentials());
             }
         }
     }

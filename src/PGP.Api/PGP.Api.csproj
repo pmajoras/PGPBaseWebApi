@@ -147,6 +147,7 @@
     <Compile Include="Loggers\ImplementedLoggers\PGPApiLogger.cs" />
     <Compile Include="Loggers\NLogger.cs" />
     <Compile Include="Messages\ApiMessageCode.cs" />
+    <Compile Include="Models\Accounts\LoginViewModel.cs" />
     <Compile Include="Models\Accounts\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,6 +166,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PGP.Api.Services\PGP.Api.Services.csproj">
+      <Project>{fae33f89-c569-48fe-8672-6e58e7bd2fd0}</Project>
+      <Name>PGP.Api.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
       <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>
       <Name>PGP.Domain</Name>

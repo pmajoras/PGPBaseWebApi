@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Domain.Tests", "PGP.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framework.Messages", "PGP.Infrastructure.Framework.Messages\PGP.Infrastructure.Framework.Messages.csproj", "{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Api.Services", "PGP.Api.Services\PGP.Api.Services.csproj", "{FAE33F89-C569-48FE-8672-6E58E7BD2FD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAE33F89-C569-48FE-8672-6E58E7BD2FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAE33F89-C569-48FE-8672-6E58E7BD2FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAE33F89-C569-48FE-8672-6E58E7BD2FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAE33F89-C569-48FE-8672-6E58E7BD2FD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{B44F162E-5A65-4D92-A634-6A50854DC434} = {8AADA0C8-86C2-4DDB-9D26-1E49629472CC}
 		{A7D69977-A986-4453-89F3-79DF560C2A22} = {8AADA0C8-86C2-4DDB-9D26-1E49629472CC}
 		{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8} = {290CB9D3-CE05-48F2-BB12-310B4C1D31D3}
+		{FAE33F89-C569-48FE-8672-6E58E7BD2FD0} = {D984CC29-86BC-4F96-8817-63F0BF5EB182}
 	EndGlobalSection
 EndGlobal

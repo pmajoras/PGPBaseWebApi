@@ -7,38 +7,44 @@ using PGP.Infrastructure.Framework.WebApi.Models.Responses;
 using PGP.Infrastructure.Repositories.EF;
 using System.Linq;
 using System;
+using PGP.Api.Filters;
 
 namespace PGP.Api.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [RoutePrefix("api/accounts")]
     public class AccountsController : PGPApiController
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountsController"/> class.
+        /// </summary>
         public AccountsController()
         {
         }
 
-        [Route("Users")]
-        [HttpGet]
-        [ApiLog]
-        public ApiResult<ApiResponse> GetUsers()
-        {
-            return ApiOkResult(new UserViewModel() { Name = "Teste", Email = "teste2" });
-        }
-
+        /// <summary>
+        /// Saves the user.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
         [HttpPost]
-        public ApiResult<ApiResponse> SaveUser(UserViewModel entity)
+        [Route("Login")]
+        public ApiResult<ApiResponse> Login([FromBody] LoginViewModel loginRequest)
         {
             return ApiOkResult();
         }
 
-        [HttpPut]
-        public ApiResult<ApiResponse> UpdateUser(UserViewModel entity)
-        {
-            return ApiOkResult();
-        }
-
-        [HttpDelete]
-        public ApiResult<ApiResponse> RemoveUser(int id)
+        /// <summary>
+        /// Updates the user.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Logoff")]
+        [BearerAuthenticationFilter()]
+        public ApiResult<ApiResponse> Logoff(UserViewModel entity)
         {
             return ApiOkResult();
         }
