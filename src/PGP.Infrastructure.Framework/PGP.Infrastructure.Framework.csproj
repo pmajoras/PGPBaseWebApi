@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\IEnumerableExtensions.cs" />
+    <Compile Include="Cryptography\PasswordHasher.cs" />
     <Compile Include="PropertyHelpers\MemberInfoExtensions.cs" />
     <Compile Include="PropertyHelpers\PropertyHelper.cs" />
     <Compile Include="Specifications\DomainSpecification.cs" />
