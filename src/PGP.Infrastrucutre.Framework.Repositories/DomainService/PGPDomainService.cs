@@ -198,9 +198,19 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <param name="specifications">The specifications.</param>
-        private void AssertSpecifications(TEntity entity, ISpecification<TEntity>[] specifications)
+        protected void AssertSpecifications(TEntity entity, ISpecification<TEntity>[] specifications)
         {
             SpecService.Assert(entity, specifications);
+        }
+
+        /// <summary>
+        /// Asserts the specification.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <param name="specification">The specification.</param>
+        protected void AssertSpecification(TEntity entity, ISpecification<TEntity> specification)
+        {
+            SpecService.Assert(entity, specification);
         }
 
         #endregion Helpers Methods

@@ -3,5 +3,6 @@
   "100": "Erro interno",
 
 
-  "1001": "A Tarefa deve pertencer a uma lista de tarefas."
+  "1001": "A Tarefa deve pertencer a uma lista de tarefas.",
+  "1051":  "A senha deve ter no mínimo seis caractéres."
 }
