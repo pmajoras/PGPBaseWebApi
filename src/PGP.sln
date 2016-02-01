@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.24627.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{290CB9D3-CE05-48F2-BB12-310B4C1D31D3}"
 EndProject
@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Domain.Tests", "PGP.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Infrastructure.Framework.Messages", "PGP.Infrastructure.Framework.Messages\PGP.Infrastructure.Framework.Messages.csproj", "{082A0FEC-9DBB-4F16-97D9-0F0BAB8001D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.Api.Services", "PGP.Api.Services\PGP.Api.Services.csproj", "{FAE33F89-C569-48FE-8672-6E58E7BD2FD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGP.ApiServices", "PGP.Api.Services\PGP.ApiServices.csproj", "{FAE33F89-C569-48FE-8672-6E58E7BD2FD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

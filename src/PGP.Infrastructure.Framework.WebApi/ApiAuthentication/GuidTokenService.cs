@@ -33,7 +33,7 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// </summary>
         /// <param name="userId">The user identifier.</param>
         /// <returns></returns>
-        public AuthenticationToken GenerateToken(int userId)
+        public AuthenticationToken GenerateToken(object userId)
         {
             string token = Guid.NewGuid().ToString();
             DateTime issuesOn = DateTime.Now;
@@ -67,7 +67,7 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        public bool ValidateToken(string tokenId)
+        public AuthenticationToken ValidateToken(string tokenId)
         {
             AuthenticationToken token = null;
             m_authenticatedTokens.TryGetValue(tokenId, out token);
@@ -77,7 +77,7 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
                 if (token.ExpiresOn > DateTime.Now)
                 {
                     token.ExpiresOn = token.ExpiresOn.AddSeconds(_authTokenExpiryInSeconds);
-                    return true;
+                    return token;
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
                 }
             }
 
-            return false;
+            return null;
         }
 
         #endregion

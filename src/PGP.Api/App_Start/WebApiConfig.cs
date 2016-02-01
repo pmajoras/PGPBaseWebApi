@@ -24,7 +24,6 @@ namespace PGP.Api
             var apiMessageHandler = new MessageHandler();
             DomainMessageHelper.MessageHandler = apiMessageHandler;
             ApiServicesHelper.RegisterService<IPGPLogger>(new PGPApiLogger());
-            ApiServicesHelper.RegisterService<ITokenService>(new GuidTokenService());
 
             // Web API configuration and services
             ErrorHandlersConfig.SetupExceptionHandlers(config, apiMessageHandler,

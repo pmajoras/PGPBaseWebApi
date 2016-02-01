@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HelperSharp, Version=1.0.5560.27038, Culture=neutral, PublicKeyToken=3d44152485e1a4e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\HelperSharp.0.0.4.2\lib\net35\HelperSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,8 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\AuthenticationService.cs" />
+    <Compile Include="Accounts\IAuthenticationService.cs" />
     <Compile Include="Accounts\UserCredentials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
+      <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>
+      <Name>PGP.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastructure.Framework.WebApi\PGP.Infrastructure.Framework.WebApi.csproj">
+      <Project>{2050c8c3-181e-4fd5-8a1f-dda2dbd7c051}</Project>
+      <Name>PGP.Infrastructure.Framework.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastructure.Framework\PGP.Infrastructure.Framework.csproj">
+      <Project>{38a7c411-a8f2-46ac-8e75-d9ce45c8706d}</Project>
+      <Name>PGP.Infrastructure.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastrucutre.Framework.Repositories\PGP.Infrastrucutre.Framework.Repositories.csproj">
+      <Project>{c4bbafad-0381-444c-84e2-4bdcc6ce3f1e}</Project>
+      <Name>PGP.Infrastrucutre.Framework.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

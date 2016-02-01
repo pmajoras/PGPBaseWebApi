@@ -166,9 +166,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PGP.Api.Services\PGP.Api.Services.csproj">
+    <ProjectReference Include="..\PGP.Api.Services\PGP.ApiServices.csproj">
       <Project>{fae33f89-c569-48fe-8672-6e58e7bd2fd0}</Project>
-      <Name>PGP.Api.Services</Name>
+      <Name>PGP.ApiServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
       <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>

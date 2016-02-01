@@ -42,6 +42,20 @@ namespace PGP.Api.HttpControllerActivators
 
             return controller;
         }
+
+        /// <summary>
+        /// Gets the kernel.
+        /// </summary>
+        /// <value>
+        /// The kernel.
+        /// </value>
+        public IKernel Kernel
+        {
+            get
+            {
+                return _kernel;
+            }
+        }
     }
 
     /// <summary>

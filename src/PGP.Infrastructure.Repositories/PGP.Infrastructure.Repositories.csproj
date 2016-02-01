@@ -67,6 +67,7 @@
     <Compile Include="EF\Mappings\Tasks\TaskMap.cs" />
     <Compile Include="EF\Repositories\TaskLists\TaskListRepository.cs" />
     <Compile Include="EF\Repositories\Tasks\TaskRepository.cs" />
+    <Compile Include="EF\Repositories\Users\UserRepository.cs" />
     <Compile Include="Migrations\Migrations\201601270039554_TaskListsMap.cs" />
     <Compile Include="Migrations\Migrations\201601270039554_TaskListsMap.Designer.cs">
       <DependentUpon>201601270039554_TaskListsMap.cs</DependentUpon>

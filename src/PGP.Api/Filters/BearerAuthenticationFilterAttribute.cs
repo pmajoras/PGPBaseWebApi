@@ -8,6 +8,9 @@ using PGP.Infrastructure.Framework.WebApi.Helpers;
 using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
 using PGP.Api.Services.Accounts;
+using System.Web.Http;
+using PGP.Api.HttpControllerActivators;
+using PGP.Infrastructure.Framework.WebApi.Models.Responses;
 
 namespace PGP.Api.Filters
 {
@@ -37,12 +40,18 @@ namespace PGP.Api.Filters
         /// <param name="actionContext">The action context, which encapsulates information for using <see cref="T:System.Web.Http.Filters.AuthorizationFilterAttribute" />.</param>
         public override void OnAuthorization(HttpActionContext actionContext)
         {
-            var tokenService = ApiServicesHelper.GetRegisteredService<ITokenService>();
+            var activator = GlobalConfiguration.Configuration.Services.GetHttpControllerActivator()
+                as NinjectKernelActivator;
+
+            var authService = activator.Kernel.GetService(typeof(IAuthenticationService)) as IAuthenticationService;
+
             var token = actionContext.GetBearerToken();
 
-            if (!tokenService.ValidateToken(token))
+            var credentials = authService.GetUserCredentialsByToken(token);
+            if (credentials.AuthStatus == CredentialsStatus.Invalid)
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new UserCredentials());
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized,
+                    new ApiResponse(credentials));
             }
         }
     }

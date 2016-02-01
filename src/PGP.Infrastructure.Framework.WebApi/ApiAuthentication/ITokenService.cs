@@ -16,7 +16,7 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        bool ValidateToken(string tokenId);
+        AuthenticationToken ValidateToken(string tokenId);
 
         /// <summary>
         /// Kills the specified token identifier.
@@ -30,6 +30,6 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// </summary>
         /// <param name="userId">The user identifier.</param>
         /// <returns></returns>
-        AuthenticationToken GenerateToken(int userId);
+        AuthenticationToken GenerateToken(object userId);
     }
 }

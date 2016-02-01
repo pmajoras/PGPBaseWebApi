@@ -57,8 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiAuthentication\AuthenticationToken.cs" />
-    <Compile Include="ApiAuthentication\ITokenService.cs" />
     <Compile Include="ApiAuthentication\GuidTokenService.cs" />
+    <Compile Include="ApiAuthentication\ITokenService.cs" />
     <Compile Include="ApiLogs\IPGPLogger.cs" />
     <Compile Include="ActionFilters\ApiLogAttribute.cs" />
     <Compile Include="Controllers\ControllersExtensions.cs" />

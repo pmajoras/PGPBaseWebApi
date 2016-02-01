@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
 
 namespace PGP.Api.Services.Accounts
 {
@@ -40,7 +41,7 @@ namespace PGP.Api.Services.Accounts
         /// <value>
         /// The authentication token.
         /// </value>
-        public string AuthToken { get; set; }
+        public AuthenticationToken AuthToken { get; set; }
 
         #endregion Properties
     }

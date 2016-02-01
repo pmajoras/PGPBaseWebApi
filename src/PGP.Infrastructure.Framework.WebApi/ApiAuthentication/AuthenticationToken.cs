@@ -51,7 +51,7 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// <value>
         /// The user identifier.
         /// </value>
-        public int UserId { get; set; }
+        public object UserId { get; set; }
 
         #endregion
 

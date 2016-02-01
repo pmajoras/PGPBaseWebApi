@@ -8,9 +8,10 @@ using PGP.Infrastructure.Repositories.EF;
 using PGP.Infrastructure.Repositories.EF.Repositories.TaskLists;
 using PGP.Infrastructure.Repositories.EF.Repositories.Tasks;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using PGP.Infrastructure.Repositories.EF.Repositories.Users;
+using PGP.Domain.Users;
+using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
+using PGP.Api.Services.Accounts;
 
 namespace PGP.Api.ApiModules
 {
@@ -29,6 +30,7 @@ namespace PGP.Api.ApiModules
 
             RegisterRepositories();
             RegisterServices();
+            RegisterApiServices();
         }
 
         /// <summary>
@@ -38,6 +40,7 @@ namespace PGP.Api.ApiModules
         {
             Bind<ITaskListRepository>().To<TaskListRepository>();
             Bind<ITaskRepository>().To<TaskRepository>();
+            Bind<IUserRepository>().To<UserRepository>();
         }
 
         /// <summary>
@@ -47,6 +50,13 @@ namespace PGP.Api.ApiModules
         {
             Bind<ITaskListService>().To<TaskListService>();
             Bind<ITaskService>().To<TaskService>();
+            Bind<IUserService>().To<UserService>();
+        }
+
+        private void RegisterApiServices()
+        {
+            Bind<ITokenService>().To<GuidTokenService>();
+            Bind<IAuthenticationService>().To<AuthenticationService>();
         }
     }
 }
