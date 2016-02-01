@@ -1,8 +1,12 @@
 ﻿{
-  "1": "Sucesso",
-  "100": "Erro interno",
+	"1": "Sucesso.",
+	"101": "Erro interno.",
+	"102": "Parâmetro obrigatório.",
 
+	// Tasks Errors
+	"1001": "A Tarefa deve pertencer a uma lista de tarefas.",
 
-  "1001": "A Tarefa deve pertencer a uma lista de tarefas.",
-  "1051":  "A senha deve ter no mínimo seis caractéres."
+	// Users Errors
+	"1051": "A senha deve ter no mínimo seis caractéres.",
+	"1052": "Já existe um usuário com o email informado."
 }

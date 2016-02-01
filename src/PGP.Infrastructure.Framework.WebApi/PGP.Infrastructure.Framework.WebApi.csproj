@@ -86,6 +86,10 @@
       <Project>{082a0fec-9dbb-4f16-97d9-0f0bab8001d8}</Project>
       <Name>PGP.Infrastructure.Framework.Messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastructure.Framework\PGP.Infrastructure.Framework.csproj">
+      <Project>{38a7c411-a8f2-46ac-8e75-d9ce45c8706d}</Project>
+      <Name>PGP.Infrastructure.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

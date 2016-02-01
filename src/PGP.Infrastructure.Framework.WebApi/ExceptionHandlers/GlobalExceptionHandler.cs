@@ -3,6 +3,8 @@ using System.Web;
 using System.Web.Http.ExceptionHandling;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
 using PGP.Infrastructure.Framework.Messages.MessageHandlers;
+using PGP.Infrastructure.Framework.Specifications.Errors;
+using System.Linq;
 
 namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
 {
@@ -31,6 +33,13 @@ namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
             if (httpException != null)
             {
                 httpStatusCode = (HttpStatusCode)httpException.ErrorCode;
+                return;
+            }
+
+            if (exception.GetType() == typeof(DomainSpecificationNotSatisfiedException<>))
+            {
+                var domainException = exception as DomainSpecificationNotSatisfiedException<object>;
+                context.Result = ApiResultsHelper.CreateApiResultFromDomainException(context.Request, domainException);
                 return;
             }
 

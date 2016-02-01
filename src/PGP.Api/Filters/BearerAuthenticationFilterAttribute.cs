@@ -11,6 +11,7 @@ using PGP.Api.Services.Accounts;
 using System.Web.Http;
 using PGP.Api.HttpControllerActivators;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
+using PGP.Api.Controllers;
 
 namespace PGP.Api.Filters
 {
@@ -52,6 +53,12 @@ namespace PGP.Api.Filters
             {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized,
                     new ApiResponse(credentials));
+            }
+
+            var controller = actionContext.ControllerContext.Controller as ApiControllerBase;
+            if (controller != null)
+            {
+                controller.CurrentAuthToken = credentials.AuthToken;
             }
         }
     }

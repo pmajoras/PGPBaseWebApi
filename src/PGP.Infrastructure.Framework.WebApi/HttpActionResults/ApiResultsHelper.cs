@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
 using PGP.Infrastructure.Framework.Messages;
+using PGP.Infrastructure.Framework.Specifications.Errors;
+using System.Linq;
 
 namespace PGP.Infrastructure.Framework.WebApi.HttpActionResults
 {
@@ -42,6 +44,26 @@ namespace PGP.Infrastructure.Framework.WebApi.HttpActionResults
             errorMessage = errorMessage ?? exception.Message;
 
             return new ApiResult<ApiResponse>(request, new ApiResponse(new ErrorContent(errorMessage, errorCode)), formatter, statusCode);
+        }
+
+        /// <summary>
+        /// Creates the API result from domain exception.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="exception">The exception.</param>
+        /// <returns></returns>
+        public static ApiResult<ApiResponse> CreateApiResultFromDomainException(
+            HttpRequestMessage request,
+            DomainSpecificationNotSatisfiedException<object> exception)
+        {
+            return new ApiResult<ApiResponse>(request,
+                new ApiResponse(exception.Errors
+                    .Select(domainError =>
+                        new ErrorContent(domainError.NotSatisfiedReason, 
+                        domainError.ErrorCode ?? 500, 
+                        domainError.FieldName))),
+                null,
+                HttpStatusCode.BadRequest);
         }
     }
 }

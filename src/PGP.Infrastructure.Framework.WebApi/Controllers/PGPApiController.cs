@@ -3,6 +3,7 @@ using System.Web.Http;
 using PGP.Infrastructure.Framework.WebApi.HttpActionResults;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
 using PGP.Infrastructure.Framework.Messages;
+using System.Collections.Generic;
 
 namespace PGP.Infrastructure.Framework.WebApi.Controllers
 {
@@ -40,6 +41,16 @@ namespace PGP.Infrastructure.Framework.WebApi.Controllers
         public virtual ApiResult<ApiResponse> ApiBadRequestResult(ErrorContent error)
         {
             return new ApiResult<ApiResponse>(Request, new ApiResponse(error), null, HttpStatusCode.BadRequest);
+        }
+
+        /// <summary>
+        /// APIs the bad request result.
+        /// </summary>
+        /// <param name="errors">The errors.</param>
+        /// <returns></returns>
+        public virtual ApiResult<ApiResponse> ApiBadRequestResult(IEnumerable<ErrorContent> errors)
+        {
+            return new ApiResult<ApiResponse>(Request, new ApiResponse(errors), null, HttpStatusCode.BadRequest);
         }
     }
 }

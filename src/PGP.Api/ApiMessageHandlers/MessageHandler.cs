@@ -28,7 +28,10 @@ namespace PGP.Api.ApiMessageHandlers
         /// </summary>
         public MessageHandler()
         {
-            LoadMessages();
+            if (s_errorList.Count == 0)
+            {
+                LoadMessages();
+            }
         }
 
         #endregion Constructors

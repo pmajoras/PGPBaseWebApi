@@ -24,6 +24,6 @@ namespace PGP.Domain.Users
         /// <param name="password">The password.</param>
         /// <param name="fullName">The full name.</param>
         /// <param name="nickName">Name of the nick.</param>
-        void RegisterUser(string username, string password, string fullName, string nickName);
+        User RegisterUser(string username, string password, string fullName, string nickName);
     }
 }

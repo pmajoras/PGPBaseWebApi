@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PGP.Domain.Users;
 
 namespace PGP.Api.Services.Accounts
 {
@@ -28,5 +29,12 @@ namespace PGP.Api.Services.Accounts
         /// <param name="token">The token.</param>
         /// <returns></returns>
         UserCredentials GetUserCredentialsByToken(string token);
+
+        /// <summary>
+        /// Registers the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
+        UserCredentials RegisterUser(User user);
     }
 }

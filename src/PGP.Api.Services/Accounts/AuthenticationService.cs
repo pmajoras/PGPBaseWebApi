@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelperSharp;
 using PGP.Domain.Users;
 using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
 
@@ -82,6 +83,25 @@ namespace PGP.Api.Services.Accounts
         public bool LogoffUser(string token)
         {
             return m_tokenService.Kill(token);
+        }
+
+        /// <summary>
+        /// Registers the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
+        public UserCredentials RegisterUser(User user)
+        {
+            ExceptionHelper.ThrowIfNull("user", user);
+            var credentials = new UserCredentials();
+
+            var savedUser = m_userService.RegisterUser(user.Username, user.Password, user.FullName, user.NickName);  
+            m_userService.Commit();
+
+            credentials.AuthToken = m_tokenService.GenerateToken(savedUser.Id);
+            credentials.AuthStatus = CredentialsStatus.Valid;
+
+            return credentials;
         }
 
         #endregion

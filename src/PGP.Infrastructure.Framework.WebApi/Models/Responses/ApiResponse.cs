@@ -1,6 +1,7 @@
 ﻿using PGP.Infrastructure.Framework.Messages;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
 {
@@ -60,6 +61,21 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
             }
 
             Errors = new List<ErrorContent>() { error }.ToArray();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiResponse"/> class.
+        /// </summary>
+        /// <param name="errors">The errors.</param>
+        /// <exception cref="System.ArgumentNullException">errors;The argument error cannot be null.</exception>
+        public ApiResponse(IEnumerable<ErrorContent> errors)
+        {
+            if (errors == null)
+            {
+                throw new ArgumentNullException("errors", "The argument error cannot be null.");
+            }
+
+            Errors = errors.ToArray();
         }
 
         /// <summary>

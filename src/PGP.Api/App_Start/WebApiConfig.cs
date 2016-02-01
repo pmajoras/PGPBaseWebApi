@@ -30,6 +30,9 @@ namespace PGP.Api
                 config.Services.GetCurrentApiLogger());
             FormattersConfig.SetupApiFormatters(config);
 
+            // AutoMapper
+            AutoMapperConfig.RegisterMapping();
+
             // Ninject
             NinjectConfig.SetupNinject();
 
