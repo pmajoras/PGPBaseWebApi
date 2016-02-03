@@ -12,6 +12,7 @@ using PGP.Infrastructure.Repositories.EF.Repositories.Users;
 using PGP.Domain.Users;
 using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
 using PGP.Api.Services.Accounts;
+using PGP.Api.Services;
 
 namespace PGP.Api.ApiModules
 {
@@ -55,7 +56,7 @@ namespace PGP.Api.ApiModules
 
         private void RegisterApiServices()
         {
-            Bind<ITokenService>().To<GuidTokenService>();
+            Bind<ITokenService>().To<JWTService>();
             Bind<IAuthenticationService>().To<AuthenticationService>();
         }
     }

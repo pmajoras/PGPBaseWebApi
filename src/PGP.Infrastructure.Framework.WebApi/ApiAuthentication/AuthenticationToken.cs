@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
 {
@@ -54,6 +55,20 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         public object UserId { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// To the JWT dictionary.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, object> ToJwtDictionary()
+        {
+            return new Dictionary<string, object>()
+            {
+                { "userId", UserId.ToString() },
+                { "initOn", InitOn.ToString("yyyyMMddHHmmss") },
+                { "expiresOn", ExpiresOn.ToString("yyyyMMddHHmmss") }
+            };
+        }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
