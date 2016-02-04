@@ -79,9 +79,12 @@ namespace PGP.Api.Controllers
             }
 
             var userToRegister = AutoMapperConfig.MapperConfig.Map<User>(user);
-            var credentials = m_authenticationService.RegisterUser(userToRegister);
+            var registeredUser = m_authenticationService.RegisterUser(userToRegister);
 
-            return ApiOkResult(credentials);
+            Commit();
+
+            user = AutoMapperConfig.MapperConfig.Map<UserViewModel>(registeredUser);
+            return ApiOkResult(user);
         }
 
         /// <summary>

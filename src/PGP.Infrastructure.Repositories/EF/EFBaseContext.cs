@@ -24,7 +24,6 @@ namespace PGP.Infrastructure.Repositories.EF
         public EFBaseContext()
             : base("PGPDatabase")
         {
-
         }
 
         #endregion

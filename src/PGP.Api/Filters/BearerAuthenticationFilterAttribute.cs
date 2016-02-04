@@ -12,6 +12,7 @@ using System.Web.Http;
 using PGP.Api.HttpControllerActivators;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
 using PGP.Api.Controllers;
+using Ninject;
 
 namespace PGP.Api.Filters
 {
@@ -44,7 +45,7 @@ namespace PGP.Api.Filters
             var activator = GlobalConfiguration.Configuration.Services.GetHttpControllerActivator()
                 as NinjectKernelActivator;
 
-            var authService = activator.Kernel.GetService(typeof(IAuthenticationService)) as IAuthenticationService;
+            var authService = activator.Kernel.Get<IAuthenticationService>() as IAuthenticationService;
 
             var token = actionContext.GetBearerToken();
 

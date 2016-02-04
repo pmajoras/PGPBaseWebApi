@@ -26,6 +26,14 @@ namespace PGP.Api.Models.Accounts
         #region Public Properties
 
         /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        public long Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the full name.
         /// </summary>
         /// <value>

@@ -23,7 +23,7 @@ namespace PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts
 
         #region Protected Properties
 
-        protected Dictionary<Type, IRepository<IEntity>> m_registeredRepositories = new Dictionary<Type, IRepository<IEntity>>();
+        protected Dictionary<Type, IRepository> m_registeredRepositories = new Dictionary<Type, IRepository>();
 
         #endregion Protected Properties
 
@@ -67,7 +67,7 @@ namespace PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts
                 throw new ArgumentException("The repository of type " + key.Name + " is already registered.");
             }
 
-            m_registeredRepositories.Add(key, repository as IRepository<IEntity>);
+            m_registeredRepositories.Add(key, repository);
         }
 
         /// <summary>
@@ -183,26 +183,28 @@ namespace PGP.Infrastructure.Framework.DomainContexts.EF.EFContexts
         {
             var contextEntries = ChangeTracker.Entries().Where(x => x.State != EntityState.Detached && x.State != EntityState.Unchanged);
             var repositories = m_registeredRepositories
-                .Where(x => x.Value.GetType().GetGenericArguments().Any())
                 .Select(x => x.Value).ToList();
 
-            foreach (var repository in repositories)
+            foreach (var repository in m_registeredRepositories)
             {
-                var entries = contextEntries.Where(x => x.Entity.GetType() == repository.GetType().GetGenericArguments()[0]);
+                var repositoryType = repository.Key;
+                var repositoryValue = repository.Value;
+
+                var entries = contextEntries.Where(x => x.Entity.GetType() == repositoryType);
                 foreach (var entry in entries)
                 {
                     switch (entry.State)
                     {
                         case EntityState.Added:
-                            repository.BeforePersistNewItem(entry.Entity as IEntity);
+                            repositoryValue.BeforePersistNewItem(entry.Entity);
                             break;
 
                         case EntityState.Deleted:
-                            repository.BeforeDeleteItem(entry.Entity as IEntity);
+                            repositoryValue.BeforeDeleteItem(entry.Entity);
                             break;
 
                         case EntityState.Modified:
-                            repository.BeforePersistUpdatedItem(entry.Entity as IEntity);
+                            repositoryValue.BeforePersistUpdatedItem(entry.Entity);
                             break;
 
                         default:

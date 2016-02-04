@@ -5,10 +5,34 @@ using System.Linq.Expressions;
 namespace PGP.Infrastructure.Framework.Repositories
 {
     /// <summary>
+    /// 
+    /// </summary>
+    public interface IRepository
+    {
+        /// <summary>
+        /// Befores the persist new item.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        void BeforePersistNewItem(object entity);
+
+        /// <summary>
+        /// Befores the delete new item.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        void BeforeDeleteItem(object entity);
+
+        /// <summary>
+        /// Befores the persist updated item.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        void BeforePersistUpdatedItem(object entity);
+    }
+
+    /// <summary>
     /// An interface that represents that the class is a repository.
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
-    public interface IRepository<TEntity> where TEntity : IEntity
+    public interface IRepository<TEntity> : IRepository where TEntity : IEntity
     {
         /// <summary>
         /// Sets the repository context.
@@ -70,23 +94,5 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         /// <param name="entity"></param>
         void Delete(TEntity entity);
-
-        /// <summary>
-        /// Befores the persist new item.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        void BeforePersistNewItem(TEntity entity);
-
-        /// <summary>
-        /// Befores the delete new item.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        void BeforeDeleteItem(TEntity entity);
-
-        /// <summary>
-        /// Befores the persist updated item.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        void BeforePersistUpdatedItem(TEntity entity);
     }
 }

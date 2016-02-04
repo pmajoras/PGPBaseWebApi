@@ -48,7 +48,9 @@ namespace PGP.Api.App_Start
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<User, UserViewModel>().ReverseMap();
+                cfg.CreateMap<User, UserViewModel>()
+                .ForMember(x => x.Password, (src) => src.Ignore())
+                .ReverseMap();
             });
 
             MapperConfig = config.CreateMapper();

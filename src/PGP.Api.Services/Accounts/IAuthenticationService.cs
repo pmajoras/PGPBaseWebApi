@@ -35,6 +35,6 @@ namespace PGP.Api.Services.Accounts
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        UserCredentials RegisterUser(User user);
+        User RegisterUser(User user);
     }
 }

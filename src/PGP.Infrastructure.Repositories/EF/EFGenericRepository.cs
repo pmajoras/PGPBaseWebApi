@@ -36,7 +36,7 @@ namespace PGP.Infrastructure.Repositories.EF
         /// Befores the delete new item.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public override void BeforeDeleteItem(TEntity entity)
+        public override void BeforeDeleteItem(object entity)
         {
             base.BeforeDeleteItem(entity);
         }
@@ -45,7 +45,7 @@ namespace PGP.Infrastructure.Repositories.EF
         /// Befores the persist new item.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public override void BeforePersistNewItem(TEntity entity)
+        public override void BeforePersistNewItem(object entity)
         {
             base.BeforePersistNewItem(entity);
         }
@@ -54,7 +54,7 @@ namespace PGP.Infrastructure.Repositories.EF
         /// Befores the persist updated item.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public override void BeforePersistUpdatedItem(TEntity entity)
+        public override void BeforePersistUpdatedItem(object entity)
         {
             base.BeforePersistUpdatedItem(entity);
         }

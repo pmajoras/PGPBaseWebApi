@@ -33,9 +33,6 @@ namespace PGP.Api
             // AutoMapper
             AutoMapperConfig.RegisterMapping();
 
-            // Ninject
-            NinjectConfig.SetupNinject();
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 

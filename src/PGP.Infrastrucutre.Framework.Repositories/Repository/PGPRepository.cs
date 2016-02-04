@@ -60,8 +60,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// Befores the delete new item.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public virtual void BeforeDeleteItem(TEntity entity)
+        public virtual void BeforeDeleteItem(object entity)
         {
         }
 
@@ -69,8 +68,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// Befores the persist new item.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public virtual void BeforePersistNewItem(TEntity entity)
+        public virtual void BeforePersistNewItem(object entity)
         {
         }
 
@@ -78,8 +76,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// Befores the persist updated item.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public virtual void BeforePersistUpdatedItem(TEntity entity)
+        public virtual void BeforePersistUpdatedItem(object entity)
         {
         }
 
