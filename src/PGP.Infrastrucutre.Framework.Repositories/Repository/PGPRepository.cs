@@ -167,6 +167,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         public virtual void SetContext(IDomainContext context)
         {
             m_domainContext = context;
+            m_domainContext.RegisterRepository(this);
         }
 
         #endregion Interface Methods

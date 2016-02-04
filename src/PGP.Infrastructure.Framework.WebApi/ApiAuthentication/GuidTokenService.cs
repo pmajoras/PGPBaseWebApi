@@ -35,6 +35,11 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// <returns></returns>
         public AuthenticationToken GenerateToken(object userId)
         {
+            if (userId == null)
+            {
+                throw new ArgumentNullException("userId");
+            }
+
             string token = Guid.NewGuid().ToString();
             DateTime issuesOn = DateTime.Now;
             DateTime expiresOn = DateTime.Now.AddSeconds(_authTokenExpiryInSeconds);
@@ -57,9 +62,9 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        public bool Kill(string tokenId)
+        public bool Kill(string token)
         {
-            return m_authenticatedTokens.Remove(tokenId);
+            return m_authenticatedTokens.Remove(token);
         }
 
         /// <summary>
@@ -67,21 +72,21 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        public AuthenticationToken ValidateToken(string tokenId)
+        public AuthenticationToken ValidateToken(string token)
         {
-            AuthenticationToken token = null;
-            m_authenticatedTokens.TryGetValue(tokenId, out token);
+            AuthenticationToken authToken = null;
+            m_authenticatedTokens.TryGetValue(token, out authToken);
 
-            if (token != null)
+            if (authToken != null)
             {
-                if (token.ExpiresOn > DateTime.Now)
+                if (authToken.ExpiresOn > DateTime.Now)
                 {
-                    token.ExpiresOn = token.ExpiresOn.AddSeconds(_authTokenExpiryInSeconds);
-                    return token;
+                    authToken.ExpiresOn = authToken.ExpiresOn.AddSeconds(_authTokenExpiryInSeconds);
+                    return authToken;
                 }
                 else
                 {
-                    Kill(tokenId);
+                    Kill(token);
                 }
             }
 

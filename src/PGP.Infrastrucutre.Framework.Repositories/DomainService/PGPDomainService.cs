@@ -42,7 +42,7 @@ namespace PGP.Infrastructure.Framework.Repositories
             ExceptionHelper.ThrowIfNull("repository", repository);
 
             m_unitOfWork = unitOfWork;
-            m_repository = repository;
+            m_repository = repository;            
         }
 
         #endregion Constructors
@@ -54,15 +54,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         public void Commit()
         {
-            try
-            {
-                m_unitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                m_unitOfWork.Rollback();
-                throw;
-            }
+            m_unitOfWork.Commit();
         }
 
         /// <summary>

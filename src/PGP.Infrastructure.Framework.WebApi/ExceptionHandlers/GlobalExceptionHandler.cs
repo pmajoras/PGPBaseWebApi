@@ -36,9 +36,9 @@ namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
                 return;
             }
 
-            if (exception.GetType() == typeof(DomainSpecificationNotSatisfiedException<>))
+            if (exception is DomainSpecificationNotSatisfiedException)
             {
-                var domainException = exception as DomainSpecificationNotSatisfiedException<object>;
+                var domainException = exception as DomainSpecificationNotSatisfiedException;
                 context.Result = ApiResultsHelper.CreateApiResultFromDomainException(context.Request, domainException);
                 return;
             }

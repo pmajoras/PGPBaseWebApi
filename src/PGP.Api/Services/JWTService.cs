@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using HelperSharp;
 using Jose;
 using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
 
@@ -37,6 +38,8 @@ namespace PGP.Api.Services
         /// <returns></returns>
         public AuthenticationToken GenerateToken(object userId)
         {
+            ExceptionHelper.ThrowIfNull("userId", userId);
+
             DateTime initOn = DateTime.Now;
             DateTime expiresOn = DateTime.Now.AddSeconds(_authTokenExpiryInSeconds);
 
@@ -58,14 +61,28 @@ namespace PGP.Api.Services
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        public bool Kill(string tokenId)
+        public bool Kill(string token)
         {
-            AuthenticationToken token = JWT.Decode<AuthenticationToken>(tokenId, secretKey);
+            if (string.IsNullOrEmpty(token))
+            {
+                return false;
+            }
+
+            AuthenticationToken authToken = null;
+
+            try
+            {
+                authToken = JWT.Decode<AuthenticationToken>(token, secretKey);
+            }
+            catch (Exception)
+            {
+            }
+
             string userId = string.Empty;
 
-            if (token != null)
+            if (authToken != null && authToken.UserId != null)
             {
-                userId = token.UserId.ToString();
+                userId = authToken.UserId.ToString();
             }
 
             return m_authenticatedTokens.Remove(userId);
@@ -76,21 +93,23 @@ namespace PGP.Api.Services
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        public AuthenticationToken ValidateToken(string tokenId)
+        public AuthenticationToken ValidateToken(string token)
         {
-            AuthenticationToken token = JWT.Decode<AuthenticationToken>(tokenId, secretKey);
+            AuthenticationToken authToken = JWT.Decode<AuthenticationToken>(token, secretKey);
 
-            if (token != null && m_authenticatedTokens.ContainsKey(token.UserId.ToString()))
+            if (authToken != null &&
+                authToken.UserId != null &&
+                m_authenticatedTokens.ContainsKey(authToken.UserId.ToString()))
             {
-                if (token.ExpiresOn > DateTime.Now)
+                if (authToken.ExpiresOn > DateTime.Now)
                 {
-                    token.ExpiresOn = token.ExpiresOn.AddSeconds(_authTokenExpiryInSeconds);
-                    token.Token = JWT.Encode(token.ToJwtDictionary(), secretKey, JwsAlgorithm.HS256);
-                    return token;
+                    authToken.ExpiresOn = authToken.ExpiresOn.AddSeconds(_authTokenExpiryInSeconds);
+                    authToken.Token = JWT.Encode(authToken.ToJwtDictionary(), secretKey, JwsAlgorithm.HS256);
+                    return authToken;
                 }
                 else
                 {
-                    Kill(token.UserId.ToString());
+                    Kill(authToken.UserId.ToString());
                 }
             }
 

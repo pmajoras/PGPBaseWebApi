@@ -13,6 +13,7 @@ using PGP.Domain.Users;
 using PGP.Infrastructure.Framework.WebApi.ApiAuthentication;
 using PGP.Api.Services.Accounts;
 using PGP.Api.Services;
+using Ninject.Web.Common;
 
 namespace PGP.Api.ApiModules
 {
@@ -26,8 +27,9 @@ namespace PGP.Api.ApiModules
         /// </summary>
         public override void Load()
         {
-            Bind<IDomainContext>().To<EFBaseContext>();
-            Bind<IUnitOfWork>().To<PGPUnitOfWork>();
+            Bind<IDomainContext>().ToMethod((c) => new EFBaseContext()).InRequestScope();
+            Bind<IUnitOfWork>().ToMethod((c) => new PGPUnitOfWork(Kernel.Get<IDomainContext>()))
+                .InRequestScope();
 
             RegisterRepositories();
             RegisterServices();
@@ -39,9 +41,9 @@ namespace PGP.Api.ApiModules
         /// </summary>
         private void RegisterRepositories()
         {
-            Bind<ITaskListRepository>().To<TaskListRepository>();
-            Bind<ITaskRepository>().To<TaskRepository>();
-            Bind<IUserRepository>().To<UserRepository>();
+            Bind<ITaskListRepository>().To<TaskListRepository>().InRequestScope();
+            Bind<ITaskRepository>().To<TaskRepository>().InRequestScope();
+            Bind<IUserRepository>().ToMethod((c) => new UserRepository(Kernel.Get<IDomainContext>())).InRequestScope();
         }
 
         /// <summary>
@@ -49,15 +51,21 @@ namespace PGP.Api.ApiModules
         /// </summary>
         private void RegisterServices()
         {
-            Bind<ITaskListService>().To<TaskListService>();
-            Bind<ITaskService>().To<TaskService>();
-            Bind<IUserService>().To<UserService>();
+            Bind<ITaskListService>().To<TaskListService>().InRequestScope();
+            Bind<ITaskService>().To<TaskService>().InRequestScope();
+            Bind<IUserService>().ToMethod((c) => new UserService(Kernel.Get<IUnitOfWork>(), Kernel.Get<IUserRepository>())).InRequestScope();
         }
 
         private void RegisterApiServices()
         {
-            Bind<ITokenService>().To<JWTService>();
-            Bind<IAuthenticationService>().To<AuthenticationService>();
+            Bind<ITokenService>().To<JWTService>().InRequestScope();
+            Bind<IAuthenticationService>().To<AuthenticationService>().InRequestScope();
+            Bind<AccountsController>().ToMethod((c) =>
+            {
+                var domainContext = new EFBaseContext();
+                var service = new UserService(new PGPUnitOfWork(domainContext), new UserRepository(domainContext));
+                return new AccountsController(new AuthenticationService(new JWTService(), service));
+            });
         }
     }
 }

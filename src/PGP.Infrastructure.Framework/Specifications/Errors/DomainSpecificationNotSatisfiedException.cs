@@ -11,36 +11,15 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
     /// </summary>
     /// <typeparam name="TTarget">The type of the target.</typeparam>
     [Serializable]
-    public class DomainSpecificationNotSatisfiedException<TTarget> : Exception
+    public class DomainSpecificationNotSatisfiedException : Exception
     {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DomainSpecificationNotSatisfiedException{TTarget}"/> class.
+        /// Initializes a new instance of the <see cref="DomainSpecificationNotSatisfiedException"/> class.
         /// </summary>
-        /// <param name="notSatisfiedReason">The not satisfied reason.</param>
-        /// <param name="notSatisfiedSpecifications">The specifications that were not satisfied.</param>
-        public DomainSpecificationNotSatisfiedException(ISpecification<TTarget>[] notSatisfiedSpecifications)
+        public DomainSpecificationNotSatisfiedException()
         {
-            var errorList = new List<DomainSpecificationError>();
-
-            if (notSatisfiedSpecifications != null && notSatisfiedSpecifications.Any())
-            {
-                foreach (ISpecification<TTarget> specification in notSatisfiedSpecifications)
-                {
-                    if (specification is IDomainSpecification<TTarget>)
-                    {
-                        errorList.AddRange(((IDomainSpecification<TTarget>)specification)
-                            .SpecificationResult.GetErrors());
-                    }
-                    else
-                    {
-                        errorList.Add(new DomainSpecificationError(specification.NotSatisfiedReason));
-                    }
-                }
-            }
-
-            Errors = errorList.ToArray();
         }
 
         #endregion Constructors
@@ -56,6 +35,39 @@ namespace PGP.Infrastructure.Framework.Specifications.Errors
         public DomainSpecificationError[] Errors { get; protected set; }
 
         #endregion Public Properties
+
+        #region Public Methods
+
+        /// <summary>
+        /// Adds the specification errors.
+        /// </summary>
+        public DomainSpecificationNotSatisfiedException SetNotSatisfiedSpecificationsErrors<T>
+            (ISpecification<T>[] notSatisfiedSpecifications)
+        {
+            var errorList = new List<DomainSpecificationError>();
+
+            if (notSatisfiedSpecifications != null && notSatisfiedSpecifications.Any())
+            {
+                foreach (ISpecification<T> specification in notSatisfiedSpecifications)
+                {
+                    if (specification is IDomainSpecification<T>)
+                    {
+                        errorList.AddRange(((IDomainSpecification<T>)specification)
+                            .SpecificationResult.GetErrors());
+                    }
+                    else
+                    {
+                        errorList.Add(new DomainSpecificationError(specification.NotSatisfiedReason));
+                    }
+                }
+            }
+
+            Errors = errorList.ToArray();
+            return this;
+        }
+
+
+        #endregion
 
         public override string ToString()
         {

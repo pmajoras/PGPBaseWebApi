@@ -94,7 +94,7 @@ namespace PGP.Api.Services.Accounts
         {
             ExceptionHelper.ThrowIfNull("user", user);
             var credentials = new UserCredentials();
-
+            
             var savedUser = m_userService.RegisterUser(user.Username, user.Password, user.FullName, user.NickName);  
             m_userService.Commit();
 

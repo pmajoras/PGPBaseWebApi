@@ -41,8 +41,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         public virtual void Commit()
         {
-            m_domainContext.BeginTransaction();
-            m_domainContext.CommitTransaction();
+            m_domainContext.SaveContextChanges();
         }
 
         /// <summary>

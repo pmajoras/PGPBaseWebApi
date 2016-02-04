@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
+using Ninject.Web.Common;
 
 namespace PGP.Api.App_Start
 {
@@ -22,7 +23,7 @@ namespace PGP.Api.App_Start
         {
             IKernel kernel = new StandardKernel(new NinjectApiModule());
             var ninjectKernelActivator = new NinjectKernelActivator(kernel);
-
+        
             GlobalConfiguration.Configuration.Services.Replace(
                 typeof(IHttpControllerActivator),
                 ninjectKernelActivator);

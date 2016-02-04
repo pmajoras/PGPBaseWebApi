@@ -37,7 +37,6 @@ namespace PGP.Api.HttpControllerActivators
         public IHttpController Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
         {
             var controller = (IHttpController)_kernel.Get(controllerType);
-
             request.RegisterForDispose(new Release(() => _kernel.Release(controller)));
 
             return controller;

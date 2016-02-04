@@ -32,7 +32,8 @@ namespace PGP.Infrastructure.Framework.Specifications
 
             if (notSatisfiedSpecifications != null && notSatisfiedSpecifications.Any())
             {
-                throw new DomainSpecificationNotSatisfiedException<TTarget>(notSatisfiedSpecifications);
+                throw new DomainSpecificationNotSatisfiedException()
+                    .SetNotSatisfiedSpecificationsErrors(notSatisfiedSpecifications);
             }
         }
 
@@ -47,7 +48,8 @@ namespace PGP.Infrastructure.Framework.Specifications
             var notSatisfiedSpecifications = SpecificationService.FilterSpecificationsAreNotSatisfiedBy(target, groupKeys);
             if (notSatisfiedSpecifications != null && notSatisfiedSpecifications.Any())
             {
-                throw new DomainSpecificationNotSatisfiedException<TTarget>(notSatisfiedSpecifications);
+                throw new DomainSpecificationNotSatisfiedException()
+                    .SetNotSatisfiedSpecificationsErrors(notSatisfiedSpecifications);
             }
         }
     }

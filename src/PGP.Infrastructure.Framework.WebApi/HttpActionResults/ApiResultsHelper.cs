@@ -54,7 +54,7 @@ namespace PGP.Infrastructure.Framework.WebApi.HttpActionResults
         /// <returns></returns>
         public static ApiResult<ApiResponse> CreateApiResultFromDomainException(
             HttpRequestMessage request,
-            DomainSpecificationNotSatisfiedException<object> exception)
+            DomainSpecificationNotSatisfiedException exception)
         {
             return new ApiResult<ApiResponse>(request,
                 new ApiResponse(exception.Errors

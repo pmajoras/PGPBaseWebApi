@@ -16,14 +16,14 @@ namespace PGP.Infrastructure.Framework.WebApi.ApiAuthentication
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        AuthenticationToken ValidateToken(string tokenId);
+        AuthenticationToken ValidateToken(string token);
 
         /// <summary>
         /// Kills the specified token identifier.
         /// </summary>
         /// <param name="tokenId">The token identifier.</param>
         /// <returns></returns>
-        bool Kill(string tokenId);
+        bool Kill(string token);
 
         /// <summary>
         /// Generates the token.
