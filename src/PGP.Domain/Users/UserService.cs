@@ -8,6 +8,7 @@ using PGP.Domain.Users.Specs;
 using PGP.Infrastructure.Framework.Commons.DomainSpecifications;
 using PGP.Infrastructure.Framework.Cryptography;
 using PGP.Infrastructure.Framework.Repositories;
+using PGP.Infrastructure.Framework.Specifications.Errors;
 using PGP.Infrastructure.Framework.Strings;
 
 namespace PGP.Domain.Users
@@ -105,11 +106,13 @@ namespace PGP.Domain.Users
         /// <returns></returns>
         protected override ISpecification<User>[] GetSaveSpecifications(User entity)
         {
-            return new ISpecification<User>[]
+            var specifications = base.GetSaveSpecifications(entity).ToList();
+            specifications.AddRange(new ISpecification<User>[]
             {
-                new MustComplyWithMetadataSpecificationBase<User>(),
                 new UserIsNotUniqueSpec(FindAll(x=> x.Id != entity.Id))
-            };
+            });
+
+            return specifications.ToArray();
         }
     }
 }

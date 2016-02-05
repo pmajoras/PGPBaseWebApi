@@ -1,5 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using KissSpecifications;
+using PGP.Domain.DomainHelpers;
+using PGP.Infrastructure.Framework.Commons.DomainSpecifications;
 using PGP.Infrastructure.Framework.Repositories;
+using PGP.Infrastructure.Framework.Specifications.Errors;
 
 namespace PGP.Domain
 {
@@ -33,6 +39,28 @@ namespace PGP.Domain
             }
 
             base.SaveEntity(entity);
+        }
+
+        protected override ISpecification<TEntity>[] GetSaveSpecifications(TEntity entity)
+        {
+            var mustComplyDictionary = new Dictionary<Type, DomainSpecificationError>();
+
+            mustComplyDictionary.Add(typeof(RequiredAttribute),
+                new DomainSpecificationError((int)DomainErrors.FieldIsRequired,
+                    DomainMessageHelper.MessageHandler.GetMessageFromEnum(DomainErrors.FieldIsRequired)));
+
+            mustComplyDictionary.Add(typeof(MinLengthAttribute),
+                new DomainSpecificationError((int)DomainErrors.FieldHasMinLength,
+                    DomainMessageHelper.MessageHandler.GetMessageFromEnum(DomainErrors.FieldHasMinLength)));
+
+            mustComplyDictionary.Add(typeof(MaxLengthAttribute),
+                new DomainSpecificationError((int)DomainErrors.FieldHasMaxLength,
+                    DomainMessageHelper.MessageHandler.GetMessageFromEnum(DomainErrors.FieldHasMaxLength)));
+
+            return new ISpecification<TEntity>[]
+            {
+                new MustComplyWithMetadataSpecificationBase<TEntity>(mustComplyDictionary)
+            };
         }
     }
 }

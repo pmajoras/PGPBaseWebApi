@@ -9,6 +9,14 @@ namespace PGP.Domain
 {
     public enum DomainErrors : int
     {
+        // 901 - 999 Fields Errors
+        [Description("The field is required.")]
+        FieldIsRequired = 901,
+        [Description("The field is required.")]
+        FieldHasMinLength = 902,
+        [Description("The field is required.")]
+        FieldHasMaxLength = 903,
+
         // 1000 - 1050 Task Entity Errors
         [Description("The task does not have a task list.")]
         TaskDoesNotHaveTaskList = 1001,

@@ -98,15 +98,40 @@ namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
         {
             string errorMessage = string.IsNullOrEmpty(attribute.ErrorMessage) ? null : attribute.ErrorMessage;
 
-            var returnError = new DomainSpecificationError(-1, errorMessage, fieldName);
             DomainSpecificationError currentError = null;
 
             if (m_errorReasons.TryGetValue(attribute.GetType(), out currentError))
             {
-                errorMessage = errorMessage ?? currentError.NotSatisfiedReason;
-                returnError = new DomainSpecificationError(currentError.ErrorCode ?? -1, errorMessage, fieldName);
+                currentError.NotSatisfiedReason = errorMessage ?? currentError.NotSatisfiedReason;
+
+                try
+                {
+                    if (attribute is MinLengthAttribute)
+                    {
+                        var minLengthAttr = attribute as MinLengthAttribute;
+                        currentError.NotSatisfiedReason = string.Format(
+                            currentError.NotSatisfiedReason,
+                            minLengthAttr.Length);
+                    }
+                    else if (attribute is MaxLengthAttribute)
+                    {
+                        var maxLengthAttr = attribute as MaxLengthAttribute;
+                        currentError.NotSatisfiedReason = string.Format(
+                            currentError.NotSatisfiedReason,
+                            maxLengthAttr.Length);
+                    }
+                }
+                catch (FormatException)
+                {
+
+                }
             }
-            return returnError;
+            else
+            {
+                currentError = new DomainSpecificationError(-1, errorMessage, fieldName);
+            }
+
+            return currentError;
         }
 
         #endregion Protected Methods

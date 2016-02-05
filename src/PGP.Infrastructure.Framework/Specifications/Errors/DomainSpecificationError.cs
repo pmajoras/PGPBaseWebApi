@@ -41,7 +41,7 @@
         /// <value>
         /// The error code.
         /// </value>
-        public int? ErrorCode { get; protected set; }
+        public int? ErrorCode { get; set; }
 
         /// <summary>
         /// Gets or sets the not satisfied reason.
@@ -49,7 +49,7 @@
         /// <value>
         /// The not satisfied reason.
         /// </value>
-        public string NotSatisfiedReason { get; protected set; }
+        public string NotSatisfiedReason { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the field.
@@ -57,7 +57,7 @@
         /// <value>
         /// The name of the field.
         /// </value>
-        public string FieldName { get; protected set; }
+        public string FieldName { get; set; }
 
         #endregion Public Properties
     }
