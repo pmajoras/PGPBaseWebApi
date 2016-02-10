@@ -37,20 +37,6 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// Initializes a new instance of the <see cref="ApiResponse"/> class.
         /// </summary>
         /// <param name="content">The content.</param>
-        /// <exception cref="System.ArgumentNullException">content;The content of the response cannot be null.</exception>
-        public ApiResponse(IViewModel content)
-        {
-            if (content == null)
-            {
-                throw new ArgumentNullException("content", "The content of the response cannot be null.");
-            }
-            Content = content;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiResponse"/> class.
-        /// </summary>
-        /// <param name="content">The content.</param>
         /// <param name="error">The error.</param>
         /// <exception cref="System.ArgumentNullException">error;The argument error cannot be null.</exception>
         public ApiResponse(ErrorContent error)
@@ -58,6 +44,31 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
             if (error == null)
             {
                 throw new ArgumentNullException("error", "The argument error cannot be null.");
+            }
+
+            Errors = new List<ErrorContent>() { error }.ToArray();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiResponse"/> class.
+        /// </summary>
+        /// <param name="content">The content.</param>
+        /// <param name="error">The error.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// error;The argument error cannot be null.
+        /// or
+        /// content;The argument content cannot be null
+        /// </exception>
+        public ApiResponse(object content, ErrorContent error)
+        {
+            if (error == null)
+            {
+                throw new ArgumentNullException("error", "The argument error cannot be null.");
+            }
+
+            if (content == null)
+            {
+                throw new ArgumentNullException("content", "The argument content cannot be null");
             }
 
             Errors = new List<ErrorContent>() { error }.ToArray();
@@ -83,7 +94,7 @@ namespace PGP.Infrastructure.Framework.WebApi.Models.Responses
         /// </summary>
         /// <param name="content">The content.</param>
         /// <param name="errors">The errors.</param>
-        public ApiResponse(IViewModel content, ErrorContent[] errors)
+        public ApiResponse(object content, ErrorContent[] errors)
             : this(content)
         {
             Errors = errors;

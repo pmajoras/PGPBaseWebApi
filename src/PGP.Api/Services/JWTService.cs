@@ -51,7 +51,7 @@ namespace PGP.Api.Services
             };
 
             authToken.Token = JWT.Encode(authToken, secretKey, JwsAlgorithm.HS256);
-            m_authenticatedTokens.Add(userId.ToString(), authToken.Token);
+            InsertOrUpdateTokenByUserId(authToken.UserId.ToString(), authToken.Token);
 
             return authToken;
         }
@@ -63,11 +63,6 @@ namespace PGP.Api.Services
         /// <returns></returns>
         public bool Kill(string token)
         {
-            if (string.IsNullOrEmpty(token))
-            {
-                return false;
-            }
-
             AuthenticationToken authToken = null;
 
             try
@@ -78,14 +73,18 @@ namespace PGP.Api.Services
             {
             }
 
-            string userId = string.Empty;
-
             if (authToken != null && authToken.UserId != null)
             {
-                userId = authToken.UserId.ToString();
+                var userId = authToken.UserId.ToString();
+                string currentToken = GetTokenByUserId(userId);
+
+                if (currentToken == token)
+                {
+                    return m_authenticatedTokens.Remove(userId);
+                }
             }
 
-            return m_authenticatedTokens.Remove(userId);
+            return false;
         }
 
         /// <summary>
@@ -95,25 +94,61 @@ namespace PGP.Api.Services
         /// <returns></returns>
         public AuthenticationToken ValidateToken(string token)
         {
-            AuthenticationToken authToken = JWT.Decode<AuthenticationToken>(token, secretKey);
-
-            if (authToken != null &&
-                authToken.UserId != null &&
-                m_authenticatedTokens.ContainsKey(authToken.UserId.ToString()))
+            try
             {
-                if (authToken.ExpiresOn > DateTime.Now)
+                AuthenticationToken authToken = JWT.Decode<AuthenticationToken>(token, secretKey);
+
+                if (authToken != null &&
+                    authToken.UserId != null)
                 {
-                    authToken.ExpiresOn = authToken.ExpiresOn.AddSeconds(_authTokenExpiryInSeconds);
-                    authToken.Token = JWT.Encode(authToken.ToJwtDictionary(), secretKey, JwsAlgorithm.HS256);
-                    return authToken;
+                    var currentToken = GetTokenByUserId(authToken.UserId.ToString());
+                    if (currentToken == token)
+                    {
+                        if (authToken.ExpiresOn > DateTime.Now)
+                        {
+                            return GenerateToken(authToken.UserId);
+
+                        }
+                        else
+                        {
+                            Kill(token);
+                        }
+                    }
                 }
-                else
-                {
-                    Kill(authToken.UserId.ToString());
-                }
+            }
+            catch (Exception)
+            {
+
             }
 
             return null;
+        }
+
+        #endregion
+
+        #region Private Helpers Methods
+
+        /// <summary>
+        /// Gets the token by user identifier.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns></returns>
+        private string GetTokenByUserId(string userId)
+        {
+            string currentToken = null;
+
+            m_authenticatedTokens.TryGetValue(userId, out currentToken);
+            return currentToken;
+        }
+
+        /// <summary>
+        /// Inserts the or update token by user identifier.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        private void InsertOrUpdateTokenByUserId(string userId, string token)
+        {
+            m_authenticatedTokens.Remove(userId);
+            m_authenticatedTokens.Add(userId, token);
         }
 
         #endregion

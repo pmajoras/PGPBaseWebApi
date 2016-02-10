@@ -16,12 +16,17 @@ namespace PGP.Infrastructure.Framework.WebApi.Extensions
         /// <returns></returns>
         public static string GetBearerToken(this HttpActionContext actionContext)
         {
-            string headerKey = "authBearer";
+            string headerKey = "Authorization";
             string authToken = string.Empty;
 
             if (actionContext.Request.Headers.Any(x => x.Key == headerKey))
             {
                 authToken = actionContext.Request.Headers.First(x => x.Key == headerKey).Value.First();
+                if (!string.IsNullOrEmpty(authToken) && authToken.Contains("Bearer "))
+                {
+                    authToken = authToken.Split(new string[] { "Bearer " }, StringSplitOptions.RemoveEmptyEntries)
+                        .Last();
+                }
             }
 
             return authToken;

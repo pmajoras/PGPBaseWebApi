@@ -8,6 +8,7 @@ using PGP.Infrastructure.Framework.Specifications.Errors;
 
 namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
 {
+
     /// <summary>
     /// Must comply with metadata specification.
     /// </summary>
@@ -102,7 +103,9 @@ namespace PGP.Infrastructure.Framework.Commons.DomainSpecifications
 
             if (m_errorReasons.TryGetValue(attribute.GetType(), out currentError))
             {
-                currentError.NotSatisfiedReason = errorMessage ?? currentError.NotSatisfiedReason;
+                currentError = new DomainSpecificationError(currentError.ErrorCode ?? -1,
+                    errorMessage ?? currentError.NotSatisfiedReason,
+                    fieldName);
 
                 try
                 {

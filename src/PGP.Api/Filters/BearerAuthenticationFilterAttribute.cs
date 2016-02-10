@@ -13,6 +13,8 @@ using PGP.Api.HttpControllerActivators;
 using PGP.Infrastructure.Framework.WebApi.Models.Responses;
 using PGP.Api.Controllers;
 using Ninject;
+using PGP.Infrastructure.Framework.Messages;
+using PGP.Api.ApiMessageHandlers;
 
 namespace PGP.Api.Filters
 {
@@ -53,7 +55,7 @@ namespace PGP.Api.Filters
             if (credentials.AuthStatus == CredentialsStatus.Invalid)
             {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized,
-                    new ApiResponse(credentials));
+                    new ApiResponse(credentials, new ErrorContent()));
             }
 
             var controller = actionContext.ControllerContext.Controller as ApiControllerBase;
