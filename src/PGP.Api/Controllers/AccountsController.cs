@@ -43,9 +43,9 @@ namespace PGP.Api.Controllers
         #region Actions
 
         /// <summary>
-        /// Saves the user.
+        /// Logins the specified login request.
         /// </summary>
-        /// <param name="entity">The entity.</param>
+        /// <param name="loginRequest">The login request.</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Login")]
@@ -63,9 +63,9 @@ namespace PGP.Api.Controllers
         }
 
         /// <summary>
-        /// Saves the user.
+        /// Registers the specified user.
         /// </summary>
-        /// <param name="entity">The entity.</param>
+        /// <param name="user">The user.</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Register")]
@@ -85,20 +85,6 @@ namespace PGP.Api.Controllers
 
             user = AutoMapperConfig.MapperConfig.Map<UserViewModel>(registeredUser);
             return ApiOkResult(user);
-        }
-
-        /// <summary>
-        /// Updates the user.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("Logoff")]
-        [BearerAuthenticationFilter]
-        public ApiResult<ApiResponse> Logoff()
-        {
-            m_authenticationService.LogoffUser(CurrentAuthToken.Token);
-            return ApiOkResult();
         }
 
         #endregion

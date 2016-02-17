@@ -63,11 +63,20 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\Specs\TaskHasTaskListSpecTests.cs" />
+    <Compile Include="Tasks\TaskServiceTests.cs" />
+    <Compile Include="Users\Specs\UserHasValidPasswordSpecTests.cs" />
+    <Compile Include="Users\Specs\UserIsNotUniqueSpecTests.cs" />
+    <Compile Include="Users\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PGP.Domain\PGP.Domain.csproj">
       <Project>{b44f162e-5a65-4d92-a634-6a50854dc434}</Project>
       <Name>PGP.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastructure.Framework.Messages\PGP.Infrastructure.Framework.Messages.csproj">
+      <Project>{082a0fec-9dbb-4f16-97d9-0f0bab8001d8}</Project>
+      <Name>PGP.Infrastructure.Framework.Messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGP.Infrastructure.Framework\PGP.Infrastructure.Framework.csproj">
       <Project>{38a7c411-a8f2-46ac-8e75-d9ce45c8706d}</Project>
@@ -77,13 +86,15 @@
       <Project>{6fb230d2-bc28-4c49-8b81-2d5fad12dc37}</Project>
       <Name>PGP.Infrastructure.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PGP.Infrastrucutre.Framework.Repositories\PGP.Infrastrucutre.Framework.Repositories.csproj">
+      <Project>{c4bbafad-0381-444c-84e2-4bdcc6ce3f1e}</Project>
+      <Name>PGP.Infrastrucutre.Framework.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tasks\Specs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -11,12 +11,9 @@ namespace PGP.Api.Services
 {
     public class JWTService : ITokenService
     {
-        private static Dictionary<string, string> m_authenticatedTokens = new Dictionary<string, string>();
-
         private static double _authTokenExpiryInSeconds = Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]);
 
         private static readonly byte[] secretKey = new byte[] { 123, 50, 20, 0, 48, 55, 12, 56, 250, 1, 44, 66, 164, 45, 66, 211, 88, 99, 216, 246, 197, 164, 75, 32, 15, 199, 221, 115, 77, 89, 5, 111 };
-
 
         #region Constructors
 
@@ -51,7 +48,6 @@ namespace PGP.Api.Services
             };
 
             authToken.Token = JWT.Encode(authToken, secretKey, JwsAlgorithm.HS256);
-            InsertOrUpdateTokenByUserId(authToken.UserId.ToString(), authToken.Token);
 
             return authToken;
         }
@@ -63,27 +59,6 @@ namespace PGP.Api.Services
         /// <returns></returns>
         public bool Kill(string token)
         {
-            AuthenticationToken authToken = null;
-
-            try
-            {
-                authToken = JWT.Decode<AuthenticationToken>(token, secretKey);
-            }
-            catch (Exception)
-            {
-            }
-
-            if (authToken != null && authToken.UserId != null)
-            {
-                var userId = authToken.UserId.ToString();
-                string currentToken = GetTokenByUserId(userId);
-
-                if (currentToken == token)
-                {
-                    return m_authenticatedTokens.Remove(userId);
-                }
-            }
-
             return false;
         }
 
@@ -101,18 +76,9 @@ namespace PGP.Api.Services
                 if (authToken != null &&
                     authToken.UserId != null)
                 {
-                    var currentToken = GetTokenByUserId(authToken.UserId.ToString());
-                    if (currentToken == token)
+                    if (authToken.ExpiresOn > DateTime.Now)
                     {
-                        if (authToken.ExpiresOn > DateTime.Now)
-                        {
-                            return GenerateToken(authToken.UserId);
-
-                        }
-                        else
-                        {
-                            Kill(token);
-                        }
+                        return GenerateToken(authToken.UserId);
                     }
                 }
             }
@@ -122,33 +88,6 @@ namespace PGP.Api.Services
             }
 
             return null;
-        }
-
-        #endregion
-
-        #region Private Helpers Methods
-
-        /// <summary>
-        /// Gets the token by user identifier.
-        /// </summary>
-        /// <param name="userId">The user identifier.</param>
-        /// <returns></returns>
-        private string GetTokenByUserId(string userId)
-        {
-            string currentToken = null;
-
-            m_authenticatedTokens.TryGetValue(userId, out currentToken);
-            return currentToken;
-        }
-
-        /// <summary>
-        /// Inserts the or update token by user identifier.
-        /// </summary>
-        /// <param name="userId">The user identifier.</param>
-        private void InsertOrUpdateTokenByUserId(string userId, string token)
-        {
-            m_authenticatedTokens.Remove(userId);
-            m_authenticatedTokens.Add(userId, token);
         }
 
         #endregion
