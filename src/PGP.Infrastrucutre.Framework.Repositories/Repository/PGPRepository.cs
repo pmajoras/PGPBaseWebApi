@@ -119,7 +119,7 @@ namespace PGP.Infrastructure.Framework.Repositories
 
             if (filter != null)
             {
-                query.Where(filter);
+                query = query.Where(filter);
             }
 
             return query;

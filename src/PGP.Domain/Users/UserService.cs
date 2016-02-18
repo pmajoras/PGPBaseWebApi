@@ -43,6 +43,11 @@ namespace PGP.Domain.Users
         /// <returns></returns>
         public User GetValidUserForLogin(string username, string password)
         {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return null;
+            }
+
             User validUser = null;
 
             var user = m_repository.FindAll(x => x.Username == username)
@@ -89,7 +94,7 @@ namespace PGP.Domain.Users
         /// <param name="entity">The entity.</param>
         public override void SaveEntity(User entity)
         {
-            if (entity.IsNew || !entity.Password.IsBase64())
+            if (entity.IsNew || string.IsNullOrEmpty(entity.Password) || !entity.Password.IsBase64())
             {
                 AssertSpecification(entity, new UserHasValidPasswordSpec());
                 entity.Salt = PasswordHasher.GenerateSalt();

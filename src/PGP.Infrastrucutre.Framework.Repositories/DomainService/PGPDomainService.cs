@@ -50,14 +50,6 @@ namespace PGP.Infrastructure.Framework.Repositories
         #region Interface Methods
 
         /// <summary>
-        /// Commits the changes to the database.
-        /// </summary>
-        public void Commit()
-        {
-            m_unitOfWork.Commit();
-        }
-
-        /// <summary>
         /// Counts quantity of entities.
         /// </summary>
         /// <returns></returns>

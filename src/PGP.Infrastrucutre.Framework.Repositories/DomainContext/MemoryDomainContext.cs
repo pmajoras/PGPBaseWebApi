@@ -45,7 +45,7 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// <summary>
         /// The m_repositories
         /// </summary>
-        private Dictionary<Type, IRepository<IEntity>> m_repositories = new Dictionary<Type, IRepository<IEntity>>();
+        private Dictionary<Type, IRepository> m_repositories = new Dictionary<Type, IRepository>();
 
         /// <summary>
         /// The current transaction
@@ -89,7 +89,7 @@ namespace PGP.Infrastructure.Framework.Repositories
                 throw new ArgumentException("The MemoryDomainContext already contains an repository with the type " + repositoryType.Name + ".");
             }
 
-            m_repositories.Add(repositoryType, repository as IRepository<IEntity>);
+            m_repositories.Add(repositoryType, repository);
         }
 
         /// <summary>

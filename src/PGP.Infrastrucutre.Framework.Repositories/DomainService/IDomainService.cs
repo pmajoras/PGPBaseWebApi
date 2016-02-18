@@ -58,10 +58,5 @@ namespace PGP.Infrastructure.Framework.Repositories
         /// </summary>
         /// <param name="entity">The entity.</param>
         void RemoveEntity(object id);
-
-        /// <summary>
-        /// Commits the changes to the database.
-        /// </summary>
-        void Commit();
     }
 }
