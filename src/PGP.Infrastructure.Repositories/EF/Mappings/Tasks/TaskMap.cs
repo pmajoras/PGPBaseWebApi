@@ -15,7 +15,11 @@ namespace PGP.Infrastructure.Repositories.EF.Mappings.Tasks
             ToTable("Tasks");
 
             HasKey(x => x.Id);
-            MapMetadata(x => x.Name);            
+            MapMetadata(x => x.Name);
+            HasRequired(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedByUserId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

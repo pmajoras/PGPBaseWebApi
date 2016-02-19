@@ -1,69 +1,70 @@
 ﻿using PGP.Domain.TaskLists;
 using PGP.Domain.Users;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace PGP.Domain.Tasks
+namespace PGP.Domain.Boards
 {
-    /// <summary>
-    ///
-    /// </summary>
-    public class Task : EntityBase
+    public class Board : EntityBase
     {
+
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the task name.
+        /// Gets or sets the name of the board.
         /// </summary>
         /// <value>
-        /// The task name.
+        /// The name of the board.
         /// </value>
         [Required]
         [StringLength(300)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the task description.
+        /// Gets or sets the description.
         /// </summary>
         /// <value>
         /// The description.
         /// </value>
-        [Required]
-        [StringLength(4000)]
+        [StringLength(1000)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the task list.
+        /// Gets or sets the owner.
         /// </summary>
         /// <value>
-        /// The task list.
+        /// The owner.
         /// </value>
-        public TaskList TaskList { get; set; }
+        public User Owner { get; set; }
 
         /// <summary>
-        /// Gets or sets the task list identifier.
+        /// Gets or sets the owner identifier.
         /// </summary>
         /// <value>
-        /// The task list identifier.
+        /// The owner identifier.
         /// </value>
-        public long TaskListId { get; set; }
+        public long OwnerId { get; set; }
 
         /// <summary>
-        /// Gets or sets the created by user.
+        /// Gets or sets the users.
         /// </summary>
         /// <value>
-        /// The created by user.
+        /// The users.
         /// </value>
-        public User CreatedByUser { get; set; }
+        public IList<User> Users { get; set; }
 
         /// <summary>
-        /// Gets or sets the created by user identifier.
+        /// Gets or sets the task lists.
         /// </summary>
         /// <value>
-        /// The created by user identifier.
+        /// The task lists.
         /// </value>
-        public long CreatedByUserId { get; set; }
+        public IList<TaskList> TaskLists { get; set; }
 
-        #endregion Public Properties
+        #endregion
     }
 }

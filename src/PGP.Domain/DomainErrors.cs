@@ -20,6 +20,8 @@ namespace PGP.Domain
         // 1000 - 1050 Task Entity Errors
         [Description("The task does not have a task list.")]
         TaskDoesNotHaveTaskList = 1001,
+        [Description("The task does not have a user.")]
+        TaskDoesNotHaveUser = 1002,
 
         // 1051 - 1100 User Entity Errors
         [Description("The user does not have a valid password.")]

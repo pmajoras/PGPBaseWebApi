@@ -25,13 +25,7 @@ namespace PGP.Infrastructure.Repositories.EF.Mappings.Users
             MapMetadata(x => x.FullName);
             MapMetadata(x => x.NickName);
 
-            MapMetadata(x => x.Username)
-                .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(
-                        new IndexAttribute("UN_Username", 1)
-                        {
-                            IsUnique = true
-                        }));
+            MapMetadata(x => x.Username).HasUniqueIndex("UN_Username");
 
             MapMetadata(x => x.Password);
             MapMetadata(x => x.Salt);

@@ -63,12 +63,19 @@
     <Compile Include="EF\EFGenericRepository.cs" />
     <Compile Include="EF\Mappings\BaseEntityTypeConfiguration.cs" />
     <Compile Include="EF\Mappings\ActionStampMap.cs" />
+    <Compile Include="EF\Mappings\Boards\BoardMap.cs" />
+    <Compile Include="EF\Mappings\PropertyConfigurationExtensions.cs" />
     <Compile Include="EF\Mappings\TaskLists\TaskListMap.cs" />
     <Compile Include="EF\Mappings\Tasks\TaskMap.cs" />
     <Compile Include="EF\Mappings\Users\UserMap.cs" />
+    <Compile Include="EF\Repositories\Boards\BoardRepository.cs" />
     <Compile Include="EF\Repositories\TaskLists\TaskListRepository.cs" />
     <Compile Include="EF\Repositories\Tasks\TaskRepository.cs" />
     <Compile Include="EF\Repositories\Users\UserRepository.cs" />
+    <Compile Include="Migrations\Migrations\201602190234529_BoardTable.cs" />
+    <Compile Include="Migrations\Migrations\201602190234529_BoardTable.Designer.cs">
+      <DependentUpon>201602190234529_BoardTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Migrations\201602012049050_UserEntity.cs" />
     <Compile Include="Migrations\Migrations\201602012049050_UserEntity.Designer.cs">
       <DependentUpon>201602012049050_UserEntity.cs</DependentUpon>
@@ -108,6 +115,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\Migrations\201602190234529_BoardTable.resx">
+      <DependentUpon>201602190234529_BoardTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Migrations\201602012049050_UserEntity.resx">
       <DependentUpon>201602012049050_UserEntity.cs</DependentUpon>
     </EmbeddedResource>

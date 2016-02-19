@@ -52,12 +52,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionStamp.cs" />
+    <Compile Include="Boards\Board.cs" />
+    <Compile Include="Boards\BoardService.cs" />
+    <Compile Include="Boards\IBoardRepository.cs" />
+    <Compile Include="Boards\IBoardService.cs" />
     <Compile Include="DomainErrors.cs" />
     <Compile Include="DomainHelpers\DomainMessageHelper.cs" />
     <Compile Include="TaskLists\ITaskListRepository.cs" />
     <Compile Include="TaskLists\ITaskListService.cs" />
     <Compile Include="TaskLists\TaskList.cs" />
     <Compile Include="TaskLists\TaskListService.cs" />
+    <Compile Include="Tasks\Specs\TaskHasCreatedByUserSpec.cs" />
     <Compile Include="Tasks\Specs\TaskHasTaskListSpec.cs" />
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\TaskService.cs" />
@@ -91,6 +96,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Boards\Specs\" />
     <Folder Include="TaskLists\Specs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

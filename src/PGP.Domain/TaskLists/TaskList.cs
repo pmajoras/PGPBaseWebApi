@@ -1,4 +1,5 @@
-﻿using PGP.Domain.Tasks;
+﻿using PGP.Domain.Boards;
+using PGP.Domain.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,22 @@ namespace PGP.Domain.TaskLists
         /// The tasks in this task list.
         /// </value>
         public IList<Task> Tasks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the board.
+        /// </summary>
+        /// <value>
+        /// The board.
+        /// </value>
+        public Board Board { get; set; }
+
+        /// <summary>
+        /// Gets or sets the board identifier.
+        /// </summary>
+        /// <value>
+        /// The board identifier.
+        /// </value>
+        public long BoardId { get; set; }
 
         #endregion Public Properties
     }

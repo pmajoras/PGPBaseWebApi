@@ -25,7 +25,7 @@ namespace PGP.Infrastructure.Repositories.EF.Mappings.TaskLists
             HasMany(x => x.Tasks)
                 .WithRequired(x => x.TaskList)
                 .HasForeignKey(x => x.TaskListId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

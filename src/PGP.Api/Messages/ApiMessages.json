@@ -1,17 +1,18 @@
 ﻿{
-	"1": "Sucesso.",
-	"101": "Erro interno.",
-	"102": "Parâmetro obrigatório.",
+  "1": "Sucesso.",
+  "101": "Erro interno.",
+  "102": "Parâmetro obrigatório.",
 
-	// Campos obrigatórios - Camada de Dominio
-	"901": "Campo obrigatório.",
-	"902": "Campo deve ter no minimo {0} caractéres.",
-	"903": "Campo deve ter no máximo {0} caractéres.",
+  // Campos obrigatórios - Camada de Dominio
+  "901": "Campo obrigatório.",
+  "902": "Campo deve ter no minimo {0} caractéres.",
+  "903": "Campo deve ter no máximo {0} caractéres.",
 
-	// Tasks Errors
-	"1001": "A Tarefa deve pertencer a uma lista de tarefas.",
+  // Tasks Errors
+  "1001": "A Tarefa deve pertencer a uma lista de tarefas.",
+  "1002": "A Tarefa deve ter sido criada por um usuário.",
 
-	// Users Errors
-	"1051": "A senha deve ter no mínimo seis caractéres.",
-	"1052": "Já existe um usuário com o email informado."
+  // Users Errors
+  "1051": "A senha deve ter no mínimo seis caractéres.",
+  "1052": "Já existe um usuário com o email informado."
 }
