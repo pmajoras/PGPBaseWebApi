@@ -15,6 +15,8 @@ using PGP.Api.Services.Accounts;
 using PGP.Api.Services;
 using Ninject.Web.Common;
 using System.Web;
+using PGP.Domain.Boards;
+using PGP.Infrastructure.Repositories.EF.Repositories.Boards;
 
 namespace PGP.Api.ApiModules
 {
@@ -44,6 +46,7 @@ namespace PGP.Api.ApiModules
             Kernel.Bind<ITaskListRepository>().To<TaskListRepository>().InRequestScope();
             Kernel.Bind<ITaskRepository>().To<TaskRepository>().InRequestScope();
             Kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+            Kernel.Bind<IBoardRepository>().To<BoardRepository>().InRequestScope();
         }
 
         /// <summary>
@@ -54,6 +57,7 @@ namespace PGP.Api.ApiModules
             Kernel.Bind<ITaskListService>().To<TaskListService>().InRequestScope();
             Kernel.Bind<ITaskService>().To<TaskService>().InRequestScope();
             Kernel.Bind<IUserService>().To<UserService>().InRequestScope();
+            Kernel.Bind<IBoardService>().To<BoardService>().InRequestScope();
         }
 
         private void RegisterApiServices()

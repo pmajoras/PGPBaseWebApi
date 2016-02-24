@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PGP.Domain.Boards;
 using PGP.Domain.DomainHelpers;
 using PGP.Domain.TaskLists;
 using PGP.Domain.TaskLists.Specs;
@@ -28,7 +29,7 @@ namespace PGP.Domain.Tests.TaskLists.Specs
         [TestMethod]
         public void IsSatisfiedBy_TaskListWithBoard_True()
         {
-            Assert.IsTrue(m_target.IsSatisfiedBy(new TaskList() { Board = new Boards.Board() }));
+            Assert.IsTrue(m_target.IsSatisfiedBy(new TaskList() { Board = new Board() }));
         }
 
         [TestMethod]

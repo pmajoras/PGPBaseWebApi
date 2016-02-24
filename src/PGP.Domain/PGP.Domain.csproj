@@ -56,6 +56,7 @@
     <Compile Include="Boards\BoardService.cs" />
     <Compile Include="Boards\IBoardRepository.cs" />
     <Compile Include="Boards\IBoardService.cs" />
+    <Compile Include="Boards\Specs\BoardMustHaveOwnerSpec.cs" />
     <Compile Include="DomainErrors.cs" />
     <Compile Include="DomainHelpers\DomainMessageHelper.cs" />
     <Compile Include="TaskLists\ITaskListRepository.cs" />
@@ -96,9 +97,7 @@
       <Name>PGP.Infrastrucutre.Framework.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Boards\Specs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

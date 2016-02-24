@@ -32,5 +32,9 @@ namespace PGP.Domain
         // 1101 - 1150 User Entity Errors
         [Description("The task list does not have a task board.")]
         TaskListDoesNothaveBoard = 1101,
+
+        // 1151 - 1200 User Entity Errors
+        [Description("The board does not have a owner.")]
+        BoardDoesNotHaveOwner = 1151,
     }
 }

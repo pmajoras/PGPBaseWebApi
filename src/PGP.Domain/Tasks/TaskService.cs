@@ -1,4 +1,7 @@
-﻿using PGP.Infrastructure.Framework.Repositories;
+﻿using KissSpecifications;
+using PGP.Domain.Tasks.Specs;
+using PGP.Infrastructure.Framework.Repositories;
+using System.Linq;
 
 namespace PGP.Domain.Tasks
 {
@@ -15,6 +18,18 @@ namespace PGP.Domain.Tasks
         public TaskService(IUnitOfWork unitOfWork, ITaskRepository repository)
             : base(unitOfWork, repository)
         {
+        }
+
+        protected override ISpecification<Task>[] GetSaveSpecifications(Task entity)
+        {
+            var specifications = base.GetSaveSpecifications(entity).ToList();
+            specifications.AddRange(new ISpecification<Task>[]
+            {
+                new TaskHasTaskListSpec(),
+                new TaskHasCreatedByUserSpec()
+            });
+
+            return specifications.ToArray();
         }
     }
 }

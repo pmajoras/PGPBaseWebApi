@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KissSpecifications;
 
 namespace PGP.Domain.Boards
 {
@@ -26,5 +27,15 @@ namespace PGP.Domain.Boards
         }
 
         #endregion
+
+        protected override ISpecification<Board>[] GetSaveSpecifications(Board entity)
+        {
+            var specifications = base.GetSaveSpecifications(entity).ToList();
+            specifications.AddRange(new ISpecification<Board>[]
+            {
+            });
+
+            return specifications.ToArray();
+        }
     }
 }

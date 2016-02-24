@@ -3,19 +3,22 @@
   "101": "Erro interno.",
   "102": "Parâmetro obrigatório.",
 
-  // Campos obrigatórios - Camada de Dominio
+  // Campos obrigatórios - Camada de Dominio 901 - 999
   "901": "Campo obrigatório.",
   "902": "Campo deve ter no minimo {0} caractéres.",
   "903": "Campo deve ter no máximo {0} caractéres.",
 
-  // Tasks Errors
+  // Tasks Errors 1000 - 1050
   "1001": "A Tarefa deve pertencer a uma lista de tarefas.",
   "1002": "A Tarefa deve ter sido criada por um usuário.",
 
-  // Users Errors
+  // Users Errors 1051 - 1100
   "1051": "A senha deve ter no mínimo seis caractéres.",
   "1052": "Já existe um usuário com o email informado.",
 
-  // TaskLists errors
-  "1101": "A Lista de tarefas deve pertencer a um quadro."
+  // TaskLists Errors 1101 - 1150
+  "1101": "A Lista de tarefas deve pertencer a um quadro.",
+
+  // Board Errors 1151 - 1200
+  "1151": "O quadro deve ter um criador."
 }
