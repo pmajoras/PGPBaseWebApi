@@ -60,6 +60,7 @@
     <Compile Include="DomainHelpers\DomainMessageHelper.cs" />
     <Compile Include="TaskLists\ITaskListRepository.cs" />
     <Compile Include="TaskLists\ITaskListService.cs" />
+    <Compile Include="TaskLists\Specs\TaskListMustHaveBoardSpec.cs" />
     <Compile Include="TaskLists\TaskList.cs" />
     <Compile Include="TaskLists\TaskListService.cs" />
     <Compile Include="Tasks\Specs\TaskHasCreatedByUserSpec.cs" />
@@ -97,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Boards\Specs\" />
-    <Folder Include="TaskLists\Specs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

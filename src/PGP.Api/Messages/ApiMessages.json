@@ -14,5 +14,8 @@
 
   // Users Errors
   "1051": "A senha deve ter no mínimo seis caractéres.",
-  "1052": "Já existe um usuário com o email informado."
+  "1052": "Já existe um usuário com o email informado.",
+
+  // TaskLists errors
+  "1101": "A Lista de tarefas deve pertencer a um quadro."
 }

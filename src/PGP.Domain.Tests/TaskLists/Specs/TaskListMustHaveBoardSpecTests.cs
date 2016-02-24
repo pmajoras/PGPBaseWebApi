@@ -1,21 +1,20 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PGP.Domain.DomainHelpers;
 using PGP.Domain.TaskLists;
-using PGP.Domain.Tasks;
-using PGP.Domain.Tasks.Specs;
+using PGP.Domain.TaskLists.Specs;
 using PGP.Infrastructure.Framework.Messages.MessageHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace PGP.Domain.Tests.Tasks.Specs
+namespace PGP.Domain.Tests.TaskLists.Specs
 {
     [TestClass]
-    public class TaskHasTaskListSpecTests
+    public class TaskListMustHaveBoardSpecTests
     {
-
-        private TaskHasTaskListSpec m_target = new TaskHasTaskListSpec();
+        private TaskListMustHaveBoardSpec m_target = new TaskListMustHaveBoardSpec();
 
         [TestInitialize]
         public void Initialize()
@@ -27,21 +26,21 @@ namespace PGP.Domain.Tests.Tasks.Specs
         #region Tests
 
         [TestMethod]
-        public void IsSatisfiedBy_TaskWithTaskList_True()
+        public void IsSatisfiedBy_TaskListWithBoard_True()
         {
-            Assert.IsTrue(m_target.IsSatisfiedBy(new Task() { TaskList = new TaskList() }));
+            Assert.IsTrue(m_target.IsSatisfiedBy(new TaskList() { Board = new Boards.Board() }));
         }
 
         [TestMethod]
-        public void IsSatisfiedBy_TaskWithoutTaskList_False()
+        public void IsSatisfiedBy_TaskListWithoutBoard_False()
         {
-            Assert.IsFalse(m_target.IsSatisfiedBy(new Task()));
+            Assert.IsFalse(m_target.IsSatisfiedBy(new TaskList()));
         }
 
         [TestMethod]
-        public void IsSatisfiedBy_TaskWithoutTaskListAndWithTaskListId_False()
+        public void IsSatisfiedBy_TaskListWithoutBoardAndWithBoardId_False()
         {
-            Assert.IsFalse(m_target.IsSatisfiedBy(new Task() { TaskListId = 5 }));
+            Assert.IsFalse(m_target.IsSatisfiedBy(new TaskList() { BoardId = 5 }));
         }
 
         #endregion

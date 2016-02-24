@@ -63,6 +63,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskLists\Specs\TaskListMustHaveBoardSpecTests.cs" />
+    <Compile Include="TaskLists\TaskListServiceTests.cs" />
     <Compile Include="Tasks\Specs\TaskHasCreatedByUserSpecTests.cs" />
     <Compile Include="Tasks\Specs\TaskHasTaskListSpecTests.cs" />
     <Compile Include="Tasks\TaskServiceTests.cs" />

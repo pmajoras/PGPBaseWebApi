@@ -27,6 +27,10 @@ namespace PGP.Domain
         [Description("The user does not have a valid password.")]
         UserDoesNotHaveValidPassword = 1051,
         [Description("The username of the user already exists.")]
-        UserUsernameAlreadyExists = 1052
+        UserUsernameAlreadyExists = 1052,
+
+        // 1101 - 1150 User Entity Errors
+        [Description("The task list does not have a task board.")]
+        TaskListDoesNothaveBoard = 1101,
     }
 }
