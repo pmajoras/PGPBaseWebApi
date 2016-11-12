@@ -1,5 +1,6 @@
 ﻿using System.Web.Http.ExceptionHandling;
 using PGP.Infrastructure.Framework.WebApi.ApiLogs;
+using System.Web.Http;
 
 namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
 {
@@ -20,16 +21,21 @@ namespace PGP.Infrastructure.Framework.WebApi.ExceptionHandlers
 
         public override void Log(ExceptionLoggerContext context)
         {
-            //context.Request, "Controller : " + context.ExceptionContext.
-            //    ActionContext.
-            //    ControllerContext.
-            //    ControllerDescriptor.ControllerType.FullName +
-            //    Environment.NewLine +
-            //    "Action : " + context.ExceptionContext.ActionContext.ActionDescriptor.ActionName,
-            //    context.Exception
+            var actionContext = ((ApiController)context.ExceptionContext.ControllerContext.Controller).ActionContext;
+            var request = context.ExceptionContext.Request;
 
-            // TODO
-            m_apiLogger.Error("MONTAR MENSAGEM DE ERRO");
+            var httpType = request.Method.Method;
+            var actionName = actionContext.ActionDescriptor.ActionName;
+            var controllerName = actionContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+            var requestPath = request.RequestUri.LocalPath;
+            var exceptionName = context.Exception.GetType().FullName;
+            string source = "";
+            if (context.Exception.TargetSite != null)
+            {
+                source = context.Exception.TargetSite.ToString();
+            }
+
+            m_apiLogger.Error(string.Format("{0} - {1} - {2}/{3} - {4} {5}", httpType, requestPath, controllerName, actionName, exceptionName, source));
         }
     }
 }

@@ -103,12 +103,7 @@ namespace PGP.Api.Loggers
                 m_classLogger = LogManager.GetCurrentClassLogger();
             }
 
-            m_classLogger.Log(logLevel,
-                new StringBuilder()
-                .Append(Environment.NewLine)
-                .Append(message)
-                .Append(Environment.NewLine)
-                .ToString());
+            m_classLogger.Log(logLevel, message);
         }
 
         #endregion Private Methods
